@@ -1,0 +1,13 @@
+<svg width="106" height="106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden">
+	<g id = "layerCompas">
+		<path d="M527.5 294.5C527.5 265.781 550.781 242.5 579.5 242.5 608.219 242.5 631.5 265.781 631.5 294.5 631.5 323.219 608.219 346.5 579.5 346.5 550.781 346.5 527.5 323.219 527.5 294.5Z" stroke="#7F7F7F" stroke-width="1.33333" stroke-miterlimit="8" fill="#A6A6A6" fill-rule="evenodd"/>
+		<rect  y="240"
+	     x="527"
+	     height="110"
+	     width="110"
+	     id = "compas" 
+	     style="fill:#000000;fill-rule:evenodd;fill-opacity:0"  />
+		<text font-family="Calibri,Calibri_MSFontService,sans-serif" font-weight="300" font-size="30" transform="translate(565 312)">N</text>
+		<path d="M565.5 278.5 579.5 254.5 593.5 278.5Z" stroke="#C00000" stroke-width="1.33333" stroke-miterlimit="8" fill="#C00000" fill-rule="evenodd"/>
+	</g>
+</svg>

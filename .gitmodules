@@ -1,0 +1,3 @@
+[submodule "ressources/personalsvg"]
+	path = ressources/personalsvg
+	url = https://github.com/nicolasviot/personalsvg
