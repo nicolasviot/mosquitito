@@ -31,7 +31,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 
 	Button but (frame, "test ajout MobileObject", $bg.x + 50, $bg.y + 50)
-	//ConstraintBox cstr(frame, "Contrainte 1", 0, 0 , "X", "Y", "Z", "Heading")
+	ConstraintBox cstr(frame, "Contrainte 1", 0, 0 , "X", "Y", "Z", "Heading")
 	but.click -> (this) {
 		
 		addChildrenTo this.map.layers {
@@ -59,7 +59,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 
 
-
+	FillColor bg2 (192, 128, 64)
 	Rectangle block1 ($bg.x + 50, $bg.y + 100, 20, 20)
 
 	Rectangle block2 ($bg.x + 100, $bg.y + 100, 20, 20)
@@ -84,6 +84,14 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
     ivybus.in.regexGetLatLon.[5] => this.map.layers.m1.latitude
 
     ivybus.in.regexGetLatLon.[6] => this.map.layers.m1.longitude
+
+
+
+
+
+
+
+
     //ivybus.in.regex.[7] => lp.input
 
     //ivybus.in.regexGetBlockNumberLeader.[0] => lp3.input
