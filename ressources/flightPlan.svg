@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1366px" height="768px" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+<g id="background">
+	<rect id="bg" fill="#393E46" width="400" height="600"/>
+	<path fill="#222831" d="M90.13,37.52H-0.23V7.03h103.27v17.58C103.04,31.74,97.26,37.52,90.13,37.52z"/>
+	
+		<text id="label" transform="matrix(0.8182 0 0 1 10.2041 28.9604)" fill="#EEEEEE" font-family="'Helvetica'" font-size="20.3927px">Plan de vol</text>
+	
+		<text id="name" transform="matrix(0.8182 0 0 1 131.8604 29.3477)" fill="#EEEEEE" font-family="'Helvetica'" font-size="20.3927px">Name :</text>
+	
+		<text id="text_name" transform="matrix(0.8182 0 0 1 197.0605 29.7354)" fill="#EEEEEE" font-family="'Helvetica'" font-size="20.3927px">formation.xml</text>
+</g>
+<g id="block">
+	<rect id="block_bg" x="17.73" y="54.95" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name" transform="matrix(1 0 0 1 51.4027 83.857)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index" transform="matrix(1 0 0 1 31.4796 83.8571)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="329.87,75.32 
+		297.01,94.29 297.01,56.35 	"/>
+</g>
+<g id="block_1_">
+	<rect id="block_bg_1_" x="59.73" y="109.21" fill="#00AF91" width="320" height="40"/>
+	
+		<text id="block_name_1_" transform="matrix(1 0 0 1 93.4027 138.1178)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">standby</text>
+	
+		<text id="block_index_1_" transform="matrix(1 0 0 1 73.4796 138.1178)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">2</text>
+	<polygon id="block_launch_1_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		371.87,129.58 339.01,148.55 339.01,110.61 	"/>
+</g>
+<g id="block_2_">
+	<rect id="block_bg_2_" x="17.73" y="163.47" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_2_" transform="matrix(1 0 0 1 51.4027 192.3785)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">init-formation</text>
+	
+		<text id="block_index_2_" transform="matrix(1 0 0 1 31.4796 192.3785)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">3</text>
+	<polygon id="block_launch_2_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,183.84 297.01,202.81 297.01,164.87 	"/>
+</g>
+<g id="block_3_">
+	<rect id="block_bg_3_" x="17.73" y="217.73" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_3_" transform="matrix(1 0 0 1 51.4027 246.6392)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">formation-survey</text>
+	
+		<text id="block_index_3_" transform="matrix(1 0 0 1 31.4796 246.6393)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">4</text>
+	<polygon id="block_launch_3_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,238.1 297.01,257.07 297.01,219.13 	"/>
+</g>
+<g id="block_4_">
+	<rect id="block_bg_4_" x="17.73" y="271.99" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_4_" transform="matrix(1 0 0 1 51.4027 300.8999)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">land</text>
+	
+		<text id="block_index_4_" transform="matrix(1 0 0 1 31.4796 300.8999)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">5</text>
+	<polygon id="block_launch_4_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,292.36 297.01,311.33 297.01,273.39 	"/>
+</g>
+<g id="block_5_">
+	<rect id="block_bg_5_" x="17.73" y="326.25" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_5_" transform="matrix(1 0 0 1 51.4027 355.1606)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index_5_" transform="matrix(1 0 0 1 31.4796 355.1607)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch_5_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,346.62 297.01,365.59 297.01,327.65 	"/>
+</g>
+<g id="block_6_">
+	<rect id="block_bg_6_" x="17.73" y="380.51" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_6_" transform="matrix(1 0 0 1 51.4027 409.4214)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index_6_" transform="matrix(1 0 0 1 31.4796 409.4214)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch_6_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,400.88 297.01,419.85 297.01,381.91 	"/>
+</g>
+<g id="block_7_">
+	<rect id="block_bg_7_" x="17.73" y="434.77" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_7_" transform="matrix(1 0 0 1 51.4027 463.6821)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index_7_" transform="matrix(1 0 0 1 31.4796 463.6822)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch_7_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,455.14 297.01,474.11 297.01,436.17 	"/>
+</g>
+<g id="block_8_">
+	<rect id="block_bg_8_" x="17.73" y="489.03" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_8_" transform="matrix(1 0 0 1 51.4027 517.9429)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index_8_" transform="matrix(1 0 0 1 31.4796 517.9429)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch_8_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,509.4 297.01,528.37 297.01,490.44 	"/>
+</g>
+<g id="block_9_">
+	<rect id="block_bg_9_" x="17.73" y="543.29" fill="#222831" width="320" height="40"/>
+	
+		<text id="block_name_9_" transform="matrix(1 0 0 1 51.4027 572.2036)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">take-off</text>
+	
+		<text id="block_index_9_" transform="matrix(1 0 0 1 31.4796 572.2037)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">1</text>
+	<polygon id="block_launch_9_" fill="#EDEDED" stroke="#1D1D1B" stroke-linecap="round" stroke-miterlimit="10" points="
+		329.87,563.66 297.01,582.63 297.01,544.7 	"/>
+</g>
+</svg>
