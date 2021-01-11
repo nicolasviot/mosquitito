@@ -33,7 +33,9 @@ Component root {
 	Exit ex (0,1)
 	frame.close->ex	
 	//Simple map component (upper right)
-	Map map(frame,"FR", 16, 43.44918, 1.263429, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 0.75) 
+
+
+	Map map(frame,"FR", 16, 43.462239, 1.272804, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 0.75) 
 	frame.width * 0.25 => map.t.tx
 	MapController mapController (map)
 	MarkerAdd markerAdd (map)

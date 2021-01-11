@@ -1,59 +1,51 @@
-/*
-#include "read_csv.h"
 
-#define macro "jobs"
-vector<vector<double>> get_path_data(string path){
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <utility>
+#include <vector>
+#include <sstream>
+class Block{
+	std::string name;
+	int id;
+	public :
+		Block(std::string, int);
+		std::string get_name(void){return name;};
+		int get_id(void){return id;};
+};
 
-	ifstream myfile (path);
-	if(!myfile.is_open()) throw runtime_error("Could not open file");
-	vector<vector<double>> res;
-	string line, word, temp;
 
-	while (getline(myfile,line)){
+Block::Block(std::string _name, int _id){
+	name = _name;
+	id = _id;
+};
 
-		stringstream s (line); 
+std::vector<Block> get_block(std::string path){
+	std::ifstream myfile (path);
+	if (!myfile.is_open()) throw std::runtime_error("Could not open file");
+	std::vector<Block> res;
 
-		vector<double> row;
-		row.clear();
+	std::string line, word, blank, sep;
+	blank = " ";
+	sep = ":";
+	while (getline(myfile, line)){
+		
+		int npos = line.find(blank);
+		std::string left = line.substr(0, npos);
+		std::string right = line.substr(npos +1, std::string::npos);
 
-		while (getline(s,word,',')){
-			row.push_back(stod(word));
-		}
-		res.push_back(row);
-	}
-	myfile.close();
-	return res;
-}
 
-vector<double> get_path_data_by_line(string path, int wanted_line){
 
-	ifstream myfile (path);
+		std::string Name, Id;
 
-	int num_line = 0; 
+		int nposl = left.find(sep);
+		int nposr = right.find(sep);
 
-	if(!myfile.is_open()) throw runtime_error("Could not open file");
-
-	vector<double> res;
-	string line, word, temp;
-
-	while (getline(myfile,line) || num_line < wanted_line){
-
-		if(num_line == wanted_line) {
-			stringstream s (line); 
-			while (getline(s,word,',')){
-				res.push_back(stod(word));
-			}
-		}
-		num_line ++;
-	}
-	myfile.close();
-	if(res.size() == 0){
-		res.push_back(0);
-		res.push_back(0);
-		res.push_back(0);
-		res.push_back(0);
-		cout << "end" << endl;
+		Name = left.substr(nposl + 1, std::string::npos);
+		Id = left.substr(nposr +1, std::string::npos);
+		res.push_back(Block(Name, std::stoi(Id)));		
 	}
 	return res;
+
+
 }
-*/

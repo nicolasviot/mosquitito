@@ -1,5 +1,4 @@
-#ifndef READ_CSV_H
-#define READ_CSV_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,8 +7,17 @@
 #include <sstream>
 using namespace std;
 
-vector<vector<double>> get_path_data(string path);
 
-vector<double> get_path_data_by_line(string path, int wanted_line);
+
+class Block{
+	string name;
+	int id;
+	public :
+		string get_name(void);
+		int get_id(void);
+}
+
+
+vector<Block> get_block(string);
 
 #endif

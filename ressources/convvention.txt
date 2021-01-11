@@ -1,0 +1,8 @@
+
+
+
+
+<!--BlockName:nomDuBlock BlockId:id-->
+
+
+regexp = "<!--BlockName[a-zA-Z :]*-->"
