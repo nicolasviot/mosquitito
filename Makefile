@@ -69,7 +69,7 @@ srcs_other := $(shell find $(src_dir) -name "*.cpp")
 #------ OLD VERSION OF GCC OR OSX --------#
 
 # standalone
-djnn_cpp_path := ../../../djnn-cpp
+djnn_cpp_path := ../djnn-cpp
 djnn_cflags := -I$(djnn_cpp_path)/src -I$(djnn_cpp_path)/src -I../../build/lib
 djnn_ldflags := -L$(djnn_cpp_path)/build/lib -ldjnn-core -ldjnn-base -ldjnn-animation -ldjnn-audio \
 				-ldjnn-comms -ldjnn-display -ldjnn-exec_env -ldjnn-files -ldjnn-gui \
@@ -79,7 +79,7 @@ djnn_lib_path := $(djnn_cpp_path)/build/lib
 # in cookbook
 #smala_path := ../..
 # standalone
-smala_path := ../../../smala
+smala_path := ../smala
 smalac := $(smala_path)/build/smalac
 smala_cflags := -I$(smala_path)/build/src_lib
 #smala_ldflags := -L$(smala_path)/build/lib -lsmala

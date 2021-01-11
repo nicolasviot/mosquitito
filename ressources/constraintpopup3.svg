@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1366px" height="768px" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+<g id="background">
+	<path id="bg" fill="#393E46" d="M6.49,200c-3.71,0-6.72-3.22-6.72-7.18V7.18C-0.23,3.22,2.78,0,6.49,0h386.56
+		c3.71,0,6.72,3.22,6.72,7.18v185.64c0,3.96-3.01,7.18-6.72,7.18H6.49z"/>
+	<path fill="#222831" d="M203.52,32.79H-0.23V6.14h216.67v13.74C216.43,27.01,210.65,32.79,203.52,32.79z"/>
+	
+		<text id="constraintname" transform="matrix(0.9363 0 0 1 10.2041 25.3096)" fill="#EEEEEE" font-family="'Helvetica'" font-size="17.8218px">Contrainte Leader/Follower</text>
+</g>
+<g id="constraintprop">
+	<text id="x" transform="matrix(1 0 0 1 88.1779 78.5468)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">x</text>
+	<text id="x_val" transform="matrix(1 0 0 1 108.101 78.5468)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	<text id="y" transform="matrix(1 0 0 1 87.9622 109.8487)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">y</text>
+	
+		<text id="y_val" transform="matrix(1 0 0 1 108.1012 109.8486)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	<text id="z" transform="matrix(1 0 0 1 88.994 141.1511)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">z</text>
+	
+		<text id="z_val" transform="matrix(1 0 0 1 108.1012 141.151)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	
+		<text id="heading" transform="matrix(1 0 0 1 16.467 172.4532)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">heading</text>
+	
+		<text id="heading_val" transform="matrix(1 0 0 1 108.101 175.2501)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+</g>
+<g id="constrainton" display="none">
+	<rect id="ongreen" x="249.92" y="5.58" display="inline" fill="#00AF91" width="62.69" height="27.77"/>
+	<rect id="onred" x="312.97" y="5.38" display="inline" fill="#660018" width="62.69" height="27.77"/>
+	<text transform="matrix(1 0 0 1 271.4922 22.648)" display="inline" font-family="'Helvetica'" font-size="12px">ON</text>
+</g>
+<g id="constraintoff">
+	<rect id="offgreen" x="249.92" y="5.58" fill="#076855" width="62.69" height="27.77"/>
+	<rect id="offred" x="313.05" y="5.58" fill="#F10033" width="62.69" height="27.77"/>
+	<text id="OFF" transform="matrix(1 0 0 1 332.9987 22.5058)" font-family="'Helvetica'" font-size="12px">OFF</text>
+</g>
+</svg>
