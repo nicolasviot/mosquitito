@@ -3,7 +3,7 @@ use core
 use base
 use display
 use gui
-import gui.interactors.SimpleDrag
+import Slider
 _define_
 ConstraintBox (Process frame, string label, double x_, double y_, string prop1, string prop2, string prop3, string prop4) {
   Translation t (x_, y_)
@@ -22,6 +22,10 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   // ? assigner une valeur
   background << svg.background
   properties << svg.constraintprop
+  Slider sliderX(frame, $x + 180, $y + 70, 0, 150)     
+  Slider sliderY(frame, $x + 180, $y + 102, 0, 150)
+  Slider sliderZ(frame, $x + 180, $y + 134, 0, 150)
+  Slider sliderHeading(frame, $x + 180, $y + 170, 0, 360)
 
   /*------ set properties -------*/
   Double xProp(564)
