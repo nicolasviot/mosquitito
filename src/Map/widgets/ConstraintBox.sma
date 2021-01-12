@@ -12,49 +12,53 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   x aka t.tx
   y aka t.ty
   /*----- interface -----*/
-  svg = loadFromXML("./ressources/personalsvg/constrainteditor/constraintpopup2.svg")
-  Spike onoff
+  svg = loadFromXML("./ressources/constraintpopup3.svg")
+  Spike onSpike
+  Spike offSpike
 
-/*
-  Ref null_ref (null)
-  Ref toDrag (null)
-  AssignmentSequence set_null (1) {
-    null_ref =: toDrag
-  }
 
-  SimpleDrag _ (toDrag, frame)
-*/
+
+
   // ? assigner une valeur
   background << svg.background
   properties << svg.constraintprop
 
   /*------ set properties -------*/
-  background.constraintname.text = label
-  properties.prop1.text = prop1
-  properties.prop2.text = prop2
-  properties.prop3.text = prop3
-  properties.prop4.text  = prop4
+  Double xProp(564)
+  Double yProp(0)
+  Double zProp(0)
+  Double headingProp(0)
+  DoubleFormatter xFormatter (0,0)
+  DoubleFormatter yFormatter (0,0)
+  DoubleFormatter zFormatter (0,0)
+  DoubleFormatter headingFormatter (0,0)
+  xProp =:> xFormatter.input
+  yProp =:> yFormatter.input
+  zProp =:> zFormatter.input
+  headingProp =:> headingFormatter.input
+  xFormatter.output =:> properties.x_val.text
+  yFormatter.output =:> properties.y_val.text
+  zFormatter.output =:> properties.z_val.text  
+  headingFormatter.output =:> properties.heading_val.text
 
-  Double prop1value(0)
   /*------ set properties -------*/
-  // default state : inactive
-  
-  FSM switchState_fsm{
-    State inactive {
-      switchstate << svg.constraintoff
-      //dump switchstate
-      switchstate.offgreen.rect.press -> onoff
-      
+  // default state : off    
+  FSM onOffSwitch{
+    State off{
+      g << svg.constraintoff
     }
-    State active {
-      switchstate << svg.constrainton
-      
-      switchstate.onred.rect.press -> onoff
+    State on {
+      g << svg.constrainton
     }
-    inactive -> active (onoff)
-    active -> inactive (onoff)
-    }
-   //dump switchState
-    
+
+    off -> on (off.g.offgreen.press, onSpike)
+    on -> off (on.g.onred.press, offSpike)
+  }
+
+
+
+
+
+
 
 }

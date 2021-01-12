@@ -12,21 +12,17 @@
 <g id="constraintprop">
 	<text id="x" transform="matrix(1 0 0 1 88.1779 78.5468)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">x</text>
 	<text id="x_val" transform="matrix(1 0 0 1 108.101 78.5468)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
-	<text id="y" transform="matrix(1 0 0 1 87.9622 109.8487)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">y</text>
-	
-		<text id="y_val" transform="matrix(1 0 0 1 108.1012 109.8486)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	<text id="y" transform="matrix(1 0 0 1 87.9622 109.8487)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">y</text>	
+	<text id="y_val" transform="matrix(1 0 0 1 108.1012 109.8486)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
 	<text id="z" transform="matrix(1 0 0 1 88.994 141.1511)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">z</text>
-	
-		<text id="z_val" transform="matrix(1 0 0 1 108.1012 141.151)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
-	
-		<text id="heading" transform="matrix(1 0 0 1 16.467 172.4532)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">heading</text>
-	
-		<text id="heading_val" transform="matrix(1 0 0 1 108.101 175.2501)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	<text id="z_val" transform="matrix(1 0 0 1 108.1012 141.151)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
+	<text id="heading" transform="matrix(1 0 0 1 4.467 172.4532)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">heading</text>
+	<text id="heading_val" transform="matrix(1 0 0 1 108.101 175.2501)" fill="#EEEEEE" font-family="'MyriadPro-Regular'" font-size="24px">10</text>
 </g>
 <g id="constrainton" display="none">
 	<rect id="ongreen" x="249.92" y="5.58" display="inline" fill="#00AF91" width="62.69" height="27.77"/>
 	<rect id="onred" x="312.97" y="5.38" display="inline" fill="#660018" width="62.69" height="27.77"/>
-	<text transform="matrix(1 0 0 1 271.4922 22.648)" display="inline" font-family="'Helvetica'" font-size="12px">ON</text>
+	<text id="off" transform="matrix(1 0 0 1 271.4922 22.648)" display="inline" font-family="'Helvetica'" font-size="12px">ON</text>
 </g>
 <g id="constraintoff">
 	<rect id="offgreen" x="249.92" y="5.58" fill="#076855" width="62.69" height="27.77"/>
