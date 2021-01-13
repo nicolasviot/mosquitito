@@ -22,10 +22,7 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   // ? assigner une valeur
   background << svg.background
   properties << svg.constraintprop
-  Slider sliderX(frame, $x + 180, $y + 70, 0, 150)     
-  Slider sliderY(frame, $x + 180, $y + 102, 0, 150)
-  Slider sliderZ(frame, $x + 180, $y + 134, 0, 150)
-  Slider sliderHeading(frame, $x + 180, $y + 170, 0, 360)
+
 
   /*------ set properties -------*/
   Double xProp(564)
@@ -36,6 +33,14 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   DoubleFormatter yFormatter (0,0)
   DoubleFormatter zFormatter (0,0)
   DoubleFormatter headingFormatter (0,0)
+  Slider sliderX(frame, $x + 180, $y + 70, 0, 150, 200)     
+  Slider sliderY(frame, $x + 180, $y + 102, 0, 150, 200)
+  Slider sliderZ(frame, $x + 180, $y + 134, 0, 150, 200)
+  Slider sliderHeading(frame, $x + 180, $y + 170, 0, 360, 200)
+  sliderX.buff =:> xProp  
+  sliderY.buff =:> yProp
+  sliderZ.buff =:> zProp
+  sliderHeading.buff =:> headingProp
   xProp =:> xFormatter.input
   yProp =:> yFormatter.input
   zProp =:> zFormatter.input

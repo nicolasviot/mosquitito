@@ -5,7 +5,7 @@ use gui
 
 
 _define_
-Slider (Process frame, double _x, double _y, double _min, double _max, ) {
+Slider (Process frame, double _x, double _y, double _min, double _max, double _width) {
   Translation t (_x, _y)
   x aka t.tx
   y aka t.ty
@@ -15,22 +15,25 @@ Slider (Process frame, double _x, double _y, double _min, double _max, ) {
   Component gobj {
     bkg << gslider.layer1.bkg
     fgd << gslider.layer1.fgd
-    Translation t_thumb (94, 0)
+    
+    Translation t_thumb ($_width * 0.5, 0)
     thumb << gslider.layer1.thumb
     t_thumb.tx + thumb.r =:> fgd.width
+    bkg.width = $_width + 2 * thumb.r
   }
   width aka gobj.bkg.width
 
   Double output (1)
-
-  Double dx (94)
-  Double min ($_min)
-  Double max ($_max)
-  Double range ($_max - $_min)
+  //dx : position du curseur
+  Double dx ($_width * 0.5)
+  Double min (0)
+  Double max ($_width)
+  Double range ($_width)
   Double buff (0)
 
-  gobj.t_thumb.tx / range =:> buff
-  buff < 0 ? 0 : (buff > 1 ? 1 : buff) =:> output
+  //gobj.t_thumb.tx / range =:> buff
+  gobj.t_thumb.tx * ($_max - $_min)/$_width =:> buff
+  buff < 0 ? 0 : (buff > $_max ? $_max : buff) =:> output
 
   FSM exec_fsm {
     State idle
@@ -39,9 +42,9 @@ Slider (Process frame, double _x, double _y, double _min, double _max, ) {
       gobj.thumb.press.x - gobj.t_thumb.tx =: offset
 	    dx > min ? (dx < max ? dx : max) : min =:> gobj.t_thumb.tx
 	    frame.move.x - offset =:> dx
-      left << gslider.layer1.left
-      right << gslider.layer1.right
-      Translation value_pos (94, 0)
+      //left << gslider.layer1.left
+      //right << gslider.layer1.right
+      Translation value_pos ($_width * 0.5, 0)
       value << gslider.layer1.value
       gobj.t_thumb.tx =:> value_pos.tx
       DoubleFormatter d_to_s (1, 2)
@@ -59,7 +62,7 @@ Slider (Process frame, double _x, double _y, double _min, double _max, ) {
     Component between
   }
   output == 1 ? "right" : (output == 0 ? "left" : "between") =:> pos.state
-
+  /*
   FSM pos_state {
     State right {
       242 =: exec_fsm.dragging.right.fill.r, exec_fsm.dragging.right.fill.g, exec_fsm.dragging.right.fill.b
@@ -76,4 +79,5 @@ Slider (Process frame, double _x, double _y, double _min, double _max, ) {
     right -> between (pos.between)
     between -> left  (pos.left)
   }
+  */
 }
