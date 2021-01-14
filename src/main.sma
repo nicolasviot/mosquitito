@@ -24,6 +24,8 @@ import testPannel.TestPannel
 import Map.models.object.MobileObject
 import Map.widgets.Button
 import cookbook.MarkerAdd
+import Map.widgets.ConstraintBox
+
 
 _main_
 Component root {
