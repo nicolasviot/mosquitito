@@ -18,19 +18,20 @@ exe_dir := .
 
 # cpp example
 exe := map
+
 srcs_sma :=	src/Slider.sma \
 			src/Map/utils/tile/ParserMapPath.sma src/Map/utils/tile/Coords2Tile.sma src/Map/utils/tile/Tile2Coords.sma src/Map/utils/computation/DistanceGps.sma src/Map/utils/computation/TrajectoryDistanceGps.sma src/Map/utils/computation/TravelTimeGps.sma src/Map/utils/computation/TrajectoryTravelTimeGps.sma src/Map/utils/computation/BearingGps.sma src/Map/utils/computation/TrajectoryBearingGps.sma src/Map/utils/conversion/Gps2Screen.sma src/Map/utils/conversion/Screen2Gps.sma \
 			src/Map/models/point/PointGps.sma src/Map/models/area/AreaPoints.sma src/Map/models/area/AreaAround.sma src/Map/models/area/MapArea.sma src/Map/models/object/MobileObject.sma src/Map/models/object/FixedObject.sma src/Map/models/object/FixedPoint.sma  src/Map/models/object/MyPlaneLabelObject.sma src/Map/models/object/MyPlaneObject.sma src/Map/models/object/MyCircleGraph.sma src/Map/models/trajectory/TrajectoryStep.sma src/Map/models/trajectory/TrajectorySteps.sma src/Map/models/trajectory/MapTrajectoryDraw.sma src/Map/models/trajectory/MapJourney.sma src/Map/models/trajectory/engine/ManualMovement.sma src/Map/models/trajectory/engine/FixedTimerMovement.sma src/Map/models/trajectory/engine/SpeedTimerMovement.sma src/Map/models/trajectory/engine/TimedMovement.sma src/Map/models/trajectory/PolygonAround.sma\
 			src/Map/models/profile/MyFlightProfile.sma src/Map/models/trajectory/DynamicJourney.sma src/Map/models/trajectory/MapTrajectory.sma src/Map/models/stream/SimuStream.sma src/Map/models/stream/InteractionStream.sma src/Map/models/stream/RejeuStream.sma src/Map/models/trajectory/RejeuTrajectories.sma\
-			src/Map/widgets/Button.sma src/Map/widgets/FLightPlaneur.sma src/Map/widgets/ConstraintBox.sma src/Map/widgets/MapController.sma src/Map/widgets/AccelerationTimeWidget.sma \
+			src/Map/widgets/Button.sma src/Map/widgets/Block.sma src/Map/widgets/FlightPlan.sma src/Map/widgets/ConstraintBox.sma src/Map/widgets/MapController.sma src/Map/widgets/AccelerationTimeWidget.sma \
 			src/Map/kernel/Tile.sma src/Map/kernel/PanAndZoom.sma \
 			src/Map/utils/sketching/MyCircle.sma src/Map/utils/sketching/NewRectHandler.sma src/Map/utils/sketching/NewCircHandler.sma src/Map/utils/sketching/MyRectangle.sma \
 			src/cookbook/MarkerAdd.sma \
 			src/Map/Map.sma \
 			src/testPannel/TestPannel.sma \
 			src/main.sma
-#srcs_sma := $(shell find $(src_dir) -name "*.sma")
-#srcs_other :=
+# srcs_sma := $(shell find $(src_dir) -name "*.sma")
+# srcs_other :=
 srcs_other := $(shell find $(src_dir) -name "*.cpp")
 
 

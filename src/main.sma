@@ -25,11 +25,12 @@ import Map.models.object.MobileObject
 import Map.widgets.Button
 import cookbook.MarkerAdd
 import Map.widgets.ConstraintBox
+import Map.widgets.FlightPlan
 
 
 _main_
 Component root {
-	Frame frame ("Constraint Editor", 0, 0,1200,800)
+	Frame frame ("Constraint Editor", 0, 0, 1920, 1080)
 	//Enable mouseTracking
 	mouseTracking =1
 	Exit ex (0,1)
@@ -55,7 +56,10 @@ Component root {
 	//Reader Component
 	//Test pannel
 	
-	TestPannel testPannel(frame, map, $frame.width * 0.25, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
+	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
+	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.24, 0, "X", "Y", "Z", "Heading")
+	FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
+
 }
 
 

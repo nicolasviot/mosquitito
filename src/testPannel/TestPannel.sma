@@ -14,8 +14,7 @@ import Map.models.object.MobileObject
 import Map.widgets.Button
 import Map.Map
 import Map.widgets.MapController
-import Map.widgets.ConstraintBox
-import Map.widgets.FlightPlan
+
 
 _define_ 
 TestPannel(Process frame, Process map, double _x, double _y, double _width, double _height){
@@ -32,8 +31,6 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 
 	Button but (frame, "test ajout MobileObject", $bg.x + 50, $bg.y + 50)
-	ConstraintBox cstr(frame, "Contrainte 1", , 0 , "X", "Y", "Z", "Heading")
-	FlightPlan fpl(frame, 20, 20)
 	but.click -> (this) {
 		
 		addChildrenTo this.map.layers {
