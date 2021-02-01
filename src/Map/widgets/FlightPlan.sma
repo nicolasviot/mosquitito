@@ -22,11 +22,6 @@ FlightPlan (Process frame, string name, double x_, double y_, double _width, dou
   g.bg.height = _height
   g.text_name.text = name 
 
-  Block takeoff(frame, "takeoff", 1, 20, 20, 360, 50)
-  Block circle(frame, "Circle around Wp1", 2, 20, 100, 360, 50)
-
-
-
-
-  
+  Block takeoff(frame, "takeoff", "1", 20, 50, 360, 50)
+  Block circle(frame, "Circle around Wp1", "2", 20, 130, 360, 50)  
 }
