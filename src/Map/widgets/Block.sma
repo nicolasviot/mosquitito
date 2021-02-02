@@ -14,43 +14,47 @@ Block(Process frame, string name, string id, double x_, double y_, double width_
 	Spike activation
 	Spike desactivation
 
+	// Int activecolor ()
+	// Int  ar()
+
 
 
 	FSM activationFSM {
 		State inactive{
 			FillColor _(192, 192, 192)
 			Rectangle bgInactif (0, 0, $width_, $height_, 5, 5)
-
+//			inactivecolor := .fill.value
 			Text idInactif (0, 0, $id)
 			Text nameInactif (5, 0, $name)
 
 
-		// 	block << svg2.block
-		// 	block.block_bg.x = 0
-		// 	block.block_bg.y = 0
-		// 	block.block_bg.width = $width_
-		// 	block.block_bg.height = $height_
+			// block << svg2.block
+			// block.block_bg.x = 0
+			// block.block_bg.y = 0
+			// block.block_bg.width = $width_
+			// block.block_bg.height = $height_
 
-		// 	block.block_name.block_name.text = $name
-		// 	block.block_name.block_name.x = 0
-		// 	block.block_name.block_name.y = -50
+			// block.block_name.block_name.text = $name
+			// block.block_name.block_name.x = 0
+			// block.block_name.block_name.y = -50
 			
-		// 	block.block_index.block_index.text = $id
-		// 	block.block_index.block_index.x = 0
-		// 	block.block_index.block_index.y = -50
-		// 	dump block.block_launch
-		// 	block.block_launch.block_launch.origin_x = 0
-		// 	block.block_launch.block_launch.origin_y = 0
-		// 	dump block.block_name
-		// 	dump block.block_index	
+			// block.block_index.block_index.text = $id
+			// block.block_index.block_index.x = 0
+			// block.block_index.block_index.y = -50
+			// dump block.block_launch
+			// block.block_launch.block_launch.origin_x = 0
+			// block.block_launch.block_launch.origin_y = 0
+			// dump block.block_name
+			// dump block.block_index	
 		}
 		State active {
-
-			FillColor _(36, 192, 36)
-			Rectangle bgActif (30, 0, $width_, $height_, 5, 5)
-			Text idActif(30, $height_ / 2, $id)
-			FillColor _(192, 192, 192)
-			Text nameInactif(35, $height_ / 2, $name)
+//activecolor := .fill.value
+			
+			 FillColor _(36, 192, 36)
+			 Rectangle bgActif (30, 0, $width_, $height_, 5, 5)
+			 Text idActif(30, $height_ / 2, $id)
+			 FillColor _(192, 192, 192)
+			// Text nameInactif(35, $height_ / 2, $name)
 			
 			
 

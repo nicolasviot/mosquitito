@@ -14,6 +14,7 @@ import Map.models.object.MobileObject
 import Map.widgets.Button
 import Map.Map
 import Map.widgets.MapController
+import Map.widgets.Drone
 
 
 _define_ 
@@ -41,12 +42,12 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 			
 		}
 	}
-	
+
 	addChildrenTo this.map.layers {
 			MobileObject m1 (43.44918, 1.263429, this.map)
 			addChildrenTo m1.gc {
-				Circle form (0, 0, 2)
-			}
+				Drone m1drone(frame, 0, 0, 0)
+				}
 			
 		}
 
@@ -72,7 +73,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
     {
         // define your regexs 
         // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
-        String regexGetLatLon ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetLatLon ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
         String regexGetBlockNumberLeader ("21 NAVIGATION (.*)")
     	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")
     }
@@ -83,6 +84,8 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
     ivybus.in.regexGetLatLon.[5] => this.map.layers.m1.latitude
 
     ivybus.in.regexGetLatLon.[6] => this.map.layers.m1.longitude
+
+    ivybus.in.regexGetLatLon.[9] => this.map.layers.m1.gc.m1drone.rot
 
 
 
