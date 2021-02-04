@@ -60,6 +60,7 @@ Component root {
 	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.24, 0, "X", "Y", "Z", "Heading")
 	cstr.xProp =:> testPannel.link.dx
 	cstr.yProp =:> testPannel.link.dy
+	cstr.headingProp =:> testPannel.link.drot
 
 
 

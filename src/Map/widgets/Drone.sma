@@ -21,8 +21,8 @@ Drone(Process frame, double _x, double _y, double _rotation){
 	rot aka _r.a
 	x + width / 2 =:> cx
 	y + height / 2 =:> cy
-	x + width /2 =:> _r.cx
-	y + height/2 =:> _r.cy
+	width / 2 =:> _r.cx
+    height / 2 =:> _r.cy
 	svgdrone  = loadFromXML ("./ressources/drone.svg")
 	g << svgdrone
 }

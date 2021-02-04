@@ -10,19 +10,20 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 
 	NoFill _
 
-	OutlineColor red (255, 0, 0)
-	OutlineWidth witdh (10)
+	OutlineColor red (168, 0, 0)
+	OutlineWidth witdh (2)
 
 
 	Double intermediaryX(0)
 	Double intermediaryY(0)
 	Double dx(0)
 	Double dy(0)
+	Double drot(0)
 
 
 	firstdrone.x + dx =:> seconddrone.x
 	firstdrone.y + dy =:> seconddrone.y
-
+	firstdrone.rot + drot =:> seconddrone.rot
 
 
 	firstdrone.x - ((firstdrone.x - seconddrone.x) * 3 / 4) =:> intermediaryX

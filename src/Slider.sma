@@ -33,7 +33,7 @@ Slider (Process frame, double _x, double _y, double _min, double _max, double _w
 
   //gobj.t_thumb.tx / range =:> buff
   gobj.t_thumb.tx * $_width / ($max - $min) =:> buff
-  buff < 0 ? $_min : (buff > $_max ? $_max : buff * range / _width + $_min) =:> output
+  buff < 0 ? $_min : (buff > max ? $max : buff * (range / _width) + $_min) =:> output
 
   FSM exec_fsm {
     State idle
