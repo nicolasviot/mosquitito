@@ -28,19 +28,19 @@ Slider (Process frame, double _x, double _y, double _min, double _max, double _w
   Double dx ($_width * 0.5)
   Double min (0)
   Double max ($_width)
-  Double range ($_width)
+  Double range ($_max - $_min)
   Double buff (0)
 
   //gobj.t_thumb.tx / range =:> buff
-  gobj.t_thumb.tx * ($_max - $_min)/$_width =:> buff
-  buff < 0 ? 0 : (buff > $_max ? $_max : buff) =:> output
+  gobj.t_thumb.tx * $_width / ($max - $min) =:> buff
+  buff < 0 ? $_min : (buff > $_max ? $_max : buff * range / _width + $_min) =:> output
 
   FSM exec_fsm {
     State idle
     State dragging {
       Double offset (0)
       gobj.thumb.press.x - gobj.t_thumb.tx =: offset
-	    dx > min ? (dx < max ? dx : max) : min =:> gobj.t_thumb.tx
+	    dx > 0 ? (dx < max ? dx : max) : 0 =:> gobj.t_thumb.tx
 	    frame.move.x - offset =:> dx
       //left << gslider.layer1.left
       //right << gslider.layer1.right

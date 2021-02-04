@@ -58,6 +58,11 @@ Component root {
 	
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
 	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.24, 0, "X", "Y", "Z", "Heading")
+	cstr.xProp =:> testPannel.link.dx
+	cstr.yProp =:> testPannel.link.dy
+
+
+
 	FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
 
 }

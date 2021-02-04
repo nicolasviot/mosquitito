@@ -32,15 +32,15 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   DoubleFormatter zFormatter (0,0)
   DoubleFormatter headingFormatter (0,0)
   
-  Slider sliderX(frame, 180, 70, 0, 150, 200)     
-  Slider sliderY(frame, 180, 102, 0, 150, 200)
-  Slider sliderZ(frame, 180, 134, 0, 150, 200)
+  Slider sliderX(frame, 180, 70, -150, 150, 200)     
+  Slider sliderY(frame, 180, 102, -150, 150, 200)
+  Slider sliderZ(frame, 180, 134, -150, 150, 200)
   Slider sliderHeading(frame, 180, 170, 0, 360, 200)
 
-  sliderX.buff =:> xProp  
-  sliderY.buff =:> yProp
-  sliderZ.buff =:> zProp
-  sliderHeading.buff =:> headingProp
+  sliderX.output =:> xProp  
+  sliderY.output =:> yProp
+  sliderZ.output =:> zProp
+  sliderHeading.output =:> headingProp
   
   xProp =:> xFormatter.input
   yProp =:> yFormatter.input
