@@ -15,7 +15,7 @@ import Map.widgets.Button
 import Map.Map
 import Map.widgets.MapController
 import Map.widgets.Drone
-
+import Map.widgets.Link
 
 _define_ 
 TestPannel(Process frame, Process map, double _x, double _y, double _width, double _height){
@@ -43,10 +43,15 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 		}
 	}
 
+	Drone m2drone(frame, 1000, 200, 0)
+	Drone m3drone(frame, 1200, 500, 0)
+	Link link(frame, m2drone, m3drone)
+	dump link
 	addChildrenTo this.map.layers {
 			MobileObject m1 (43.44918, 1.263429, this.map)
 			addChildrenTo m1.gc {
 				Drone m1drone(frame, 0, 0, 0)
+
 				}
 			
 		}
