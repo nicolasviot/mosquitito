@@ -77,6 +77,8 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
     {
         // define your regexs 
         // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
+        //FLIGHT_PARAM (ID 11)
+        
         String regexGetLatLon ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
         String regexGetBlockNumberLeader ("21 NAVIGATION (.*)")
     	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")

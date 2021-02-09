@@ -16,7 +16,7 @@ use core
 use base
 use display
 use gui
-
+use comms
 
 import Map.Map
 import Map.widgets.MapController
@@ -26,7 +26,7 @@ import Map.widgets.Button
 import cookbook.MarkerAdd
 import Map.widgets.ConstraintBox
 import Map.widgets.FlightPlan
-
+import Map.widgets.ControlPannel
 
 _main_
 Component root {
@@ -42,22 +42,20 @@ Component root {
 	frame.width * 0.25 => map.t.tx
 	MapController mapController (map)
 	MarkerAdd markerAdd (map)
-	Button but (frame, "test ajout in main", 50, 50)
-	but.click -> (root){
-		addChildrenTo root.map.layers {
-			MobileObject m (43.45, 1.263429, root.map)
-		}
-		addChildrenTo root.map.layers.m.gc {
-			FillColor bg (0, 0, 255)
-			Circle form (0,0,60)
-		}
-	}
-
+	// Button but (frame, "TAKEOFF !", 50, 50)
+	//IvyAccess ivybustest ("127.255.255.255:2010", "smala takeoff", "READY")
+	//but.click -> {
+	//"ground JUMP_TO_BLOCK 21 3" =:root.ivybustest.out
+	//}
+	// "GO_TO_BLOCK 4 1" =: root.ivybustest.out
 	//Reader Component
 	//Test pannel
 	
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
 	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.24, 0, "X", "Y", "Z", "Heading")
+	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, $frame.height * 0.30)
+
+
 	cstr.xProp =:> testPannel.link.dx
 	cstr.yProp =:> testPannel.link.dy
 	cstr.headingProp =:> testPannel.link.drot

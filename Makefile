@@ -30,6 +30,7 @@ srcs_sma :=	src/Slider.sma \
 			src/cookbook/MarkerAdd.sma \
 			src/Map/Map.sma \
 			src/testPannel/TestPannel.sma \
+			src/Map/widgets/ControlPannel.sma \
 			src/main.sma
 # srcs_sma := $(shell find $(src_dir) -name "*.sma")
 # srcs_other :=

@@ -15,11 +15,12 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   svg = loadFromXML("./ressources/constraintpopup3.svg")
   Spike onSpike
   Spike offSpike
-
+  Spike noSpike
   background << svg.background
   properties << svg.constraintprop
 
-
+  dump background
+  background.bg.press -> noSpike
   /*------ set properties -------*/
   
   Double xProp(564)

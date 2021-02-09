@@ -11,7 +11,7 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	NoFill _
 
 	OutlineColor red (168, 0, 0)
-	OutlineWidth witdh (2)
+	OutlineWidth witdh (5)
 
 
 	Double intermediaryX(0)
@@ -26,13 +26,14 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	firstdrone.rot + drot =:> seconddrone.rot
 
 
-	firstdrone.x - ((firstdrone.x - seconddrone.x) * 3 / 4) =:> intermediaryX
-	firstdrone.y - ((firstdrone.y - seconddrone.y) * 1 / 2) =:> intermediaryY
+	// firstdrone.x - ((firstdrone.x - seconddrone.x) * 3 / 4) =:> intermediaryX
+	// firstdrone.y - ((firstdrone.y - seconddrone.y) * 1 / 2) =:> intermediaryY
 	
 
 	Path path{
 		PathMove origin(0, 0)
-		PathQuadratic destination(0, 0, 0, 0)
+		// PathQuadratic destination(0, 0, 0, 0)
+		PathLine destination(0, 0)
 	}
 
 
@@ -40,8 +41,8 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	firstdrone.cy =:> path.origin.y
 	seconddrone.cx =:> path.destination.x
 	seconddrone.cy =:> path.destination.y
-	intermediaryX =:> path.destination.x1
-	intermediaryY =:> path.destination.y1
+	// intermediaryX =:> path.destination.x1
+	// intermediaryY =:> path.destination.y1
 
 	// Path whatapathlooklike{
 	// 	PathMove ori (1500, 500)
