@@ -39,28 +39,59 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 			addChildrenTo m.gc {
 				Circle form (0, 0, 100)
 			}
-			
 		}
 	}
 
+
+	//Leader
+	
+	//Follower1
+	
+	//Follower2
+	
+
+	
 	Drone m2drone(frame, 1000, 200, 0)
+	/*
 	Drone m3drone(frame, 1200, 500, 0)
-	Link link(frame, m2drone, m3drone)
+	*/
+	
+	
+
+	addChildrenTo this.map.layers {
+		MobileObject leader (43.44918, 1.263429, this.map)
+		addChildrenTo leader.gc {
+			Drone leaderDrone(frame, 0, 0, 0)
+		}
+		MobileObject follower1 (43.44918, 1.263429, this.map)
+		addChildrenTo follower1.gc{
+			Drone f1Drone(frame, 0, 0, 0)
+		}
+		MobileObject follower2 (43.44918, 1.263429, this.map)
+		addChildrenTo follower2.gc{
+			Drone f2Drone(frame, 1200, 800, 0)
+		}
+	}
+
+	//leaderDrone aka this.map.layers.leader.leaderDrone 
+	Link link1(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower1.gc.f1Drone)
+
+	Link link2(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower2.gc.f2Drone)
+
+/*
 	addChildrenTo this.map.layers {
 			MobileObject m1 (43.44918, 1.263429, this.map)
 			addChildrenTo m1.gc {
-				Drone m1drone(frame, 0, 0, 0)
-
+				Drone leader(frame, 0, 0, 0)
 				}
-			
 		}
-
+*/
 
 	/* ------- Log Printer to receive a Message in Terminal ---*/
     LogPrinter lp ("ivybus: latitude ")
     LogPrinter lp2 ("ivybus: longitude ")
 	LogPrinter lp3 ("Block status : ")
-
+	LogPrinter lp4 ("slot message : ")
 
 
 	FillColor bg2 (192, 128, 64)
@@ -79,23 +110,39 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
         // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
         //FLIGHT_PARAM (ID 11)
         
-        String regexGetLatLon ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-        String regexGetBlockNumberLeader ("21 NAVIGATION (.*)")
+        String regexGetLatLonL ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberL ("21 NAVIGATION (.*)")
+        String regexGetLatLonF1 ("ground NAV_STATUS 22 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberF1 ("22 NAVIGATION (.*)")
+        String regexGetLatLonF2 ("ground NAV_STATUS 23 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberF2 ("23 NAVIGATION (.*)")
     	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")
+    	String regexSlot("ground FORMATION_SLOT_TM (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
     }
 
+
+
     //creating a connector to display incomming messages in the text
-    ivybus.in.regexGetLatLon.[5] => lp.input
-    ivybus.in.regexGetLatLon.[6] => lp2.input
-    ivybus.in.regexGetLatLon.[5] => this.map.layers.m1.latitude
+    // ivybus.in.regexGetLatLonL.[5] => lp.input
+    // ivybus.in.regexGetLatLonL.[6] => lp2.input
+    ivybus.in.regexGetLatLonL.[5] => this.map.layers.leader.latitude
+    ivybus.in.regexGetLatLonL.[6] => this.map.layers.leader.longitude
+    ivybus.in.regexGetLatLonL.[9] => this.map.layers.leader.gc.leaderDrone.rot
 
-    ivybus.in.regexGetLatLon.[6] => this.map.layers.m1.longitude
+	// ivybus.in.regexGetLatLonF1.[5] => lp.input
+ //    ivybus.in.regexGetLatLonF1.[6] => lp2.input
+    ivybus.in.regexGetLatLonF1.[5] => this.map.layers.follower1.latitude
+    ivybus.in.regexGetLatLonF1.[6] => this.map.layers.follower1.longitude
+    ivybus.in.regexGetLatLonF1.[9] => this.map.layers.follower1.gc.f1Drone.rot
 
-    ivybus.in.regexGetLatLon.[9] => this.map.layers.m1.gc.m1drone.rot
 
+	// ivybus.in.regexGetLatLonF2.[5] => lp.input
+ //    ivybus.in.regexGetLatLonF2.[6] => lp2.input
+    ivybus.in.regexGetLatLonF2.[5] => this.map.layers.follower2.latitude
+    ivybus.in.regexGetLatLonF2.[6] => this.map.layers.follower2.longitude
+    ivybus.in.regexGetLatLonF2.[9] => this.map.layers.follower2.gc.f2Drone.rot
 
-
-
+    ivybus.in.regexSlot => lp4.input	
 
 
 

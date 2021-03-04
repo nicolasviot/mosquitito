@@ -42,13 +42,6 @@ Component root {
 	frame.width * 0.25 => map.t.tx
 	MapController mapController (map)
 	MarkerAdd markerAdd (map)
-	// Button but (frame, "TAKEOFF !", 50, 50)
-	//IvyAccess ivybustest ("127.255.255.255:2010", "smala takeoff", "READY")
-	//but.click -> {
-	//"ground JUMP_TO_BLOCK 21 3" =:root.ivybustest.out
-	//}
-	// "GO_TO_BLOCK 4 1" =: root.ivybustest.out
-	//Reader Component
 	//Test pannel
 	
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
@@ -56,9 +49,9 @@ Component root {
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, $frame.height * 0.30)
 
 
-	cstr.xProp =:> testPannel.link.dx
-	cstr.yProp =:> testPannel.link.dy
-	cstr.headingProp =:> testPannel.link.drot
+	cstr.xProp =:> testPannel.link1.dx
+	cstr.yProp =:> testPannel.link1.dy
+	cstr.headingProp =:> testPannel.link1.drot
 
 
 

@@ -3,7 +3,8 @@ use core
 use base
 use display
 use gui
-
+import Map.utils.conversion.Gps2Screen
+import Map.utils.conversion.Screen2Gps
 
 _define_
 Link(Process frame, Process firstdrone, Process seconddrone){

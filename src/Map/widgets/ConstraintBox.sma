@@ -19,8 +19,9 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   background << svg.background
   properties << svg.constraintprop
 
-  dump background
+  //consume mouseevents
   background.bg.press -> noSpike
+  
   /*------ set properties -------*/
   
   Double xProp(564)
@@ -53,6 +54,7 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   zFormatter.output =:> properties.z_val.text  
   headingFormatter.output =:> properties.heading_val.text
 
+ 
   /*------ set properties -------*/
   // default state : off    
   FSM onOffSwitch{
