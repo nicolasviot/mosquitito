@@ -56,32 +56,49 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	String change_value_23_6("ground DL_SETTING 23 6 ")
 	String change_value_23_7("ground DL_SETTING 23 7 ")
 
-	Double prop (25)
+	/* 
+	variables index 
+		2 Yf2
+		3 Yf1
+		4 Yl
+		5 Xf2
+		6 Xf1
+		7 Xl
+	*/
+
+
+
+
+	Double Xl(0)
+	Double Yl(0)
+	Double Xf1(0)
+	Double Yf1(0)
+	Double Xf2(0)
+	Double Yf2(0)
 	
 
 	IvyAccess controlPannelBus("127.255.255.255:2010", "smala ControlPannel", "READY")
 
-	change_value_21_2 + toString(prop) =:> controlPannelBus.out
-	change_value_21_3 + toString(prop) =:> controlPannelBus.out
-	change_value_21_4 + toString(prop) =:> controlPannelBus.out
-	change_value_21_5 + toString(prop) =:> controlPannelBus.out
-	change_value_21_6 + toString(prop) =:> controlPannelBus.out
-	change_value_21_7 + toString(prop) =:> controlPannelBus.out
+	change_value_21_2 + toString(Yf2) =:> controlPannelBus.out
+	change_value_21_3 + toString(Yf1) =:> controlPannelBus.out
+	change_value_21_4 + toString(Yl) =:> controlPannelBus.out
+	change_value_21_5 + toString(Xf2) =:> controlPannelBus.out
+	change_value_21_6 + toString(Xf1) =:> controlPannelBus.out
+	change_value_21_7 + toString(Xl) =:> controlPannelBus.out
 	
-	change_value_22_2 + toString(prop) =:> controlPannelBus.out
-	change_value_22_3 + toString(prop) =:> controlPannelBus.out
-	change_value_22_4 + toString(prop) =:> controlPannelBus.out
-	change_value_22_5 + toString(prop) =:> controlPannelBus.out
-	change_value_22_6 + toString(prop) =:> controlPannelBus.out
-	change_value_22_7 + toString(prop) =:> controlPannelBus.out
+	change_value_22_2 + toString(Yf2) =:> controlPannelBus.out
+	change_value_22_3 + toString(Yf1) =:> controlPannelBus.out
+	change_value_22_4 + toString(Yl) =:> controlPannelBus.out
+	change_value_22_5 + toString(Xf2) =:> controlPannelBus.out
+	change_value_22_6 + toString(Xf1) =:> controlPannelBus.out
+	change_value_22_7 + toString(Xl) =:> controlPannelBus.out
 
-	change_value_23_2 + toString(prop) =:> controlPannelBus.out
-	change_value_23_3 + toString(prop) =:> controlPannelBus.out
-	change_value_23_4 + toString(prop) =:> controlPannelBus.out
-	change_value_23_5 + toString(prop) =:> controlPannelBus.out
-	change_value_23_6 + toString(prop) =:> controlPannelBus.out
-	change_value_23_7 + toString(prop) =:> controlPannelBus.out
-// INIT FORMATION for everyone => formation for followers
+	change_value_23_2 + toString(Yf2) =:> controlPannelBus.out
+	change_value_23_3 + toString(Yf1) =:> controlPannelBus.out
+	change_value_23_4 + toString(Yl) =:> controlPannelBus.out
+	change_value_23_5 + toString(Xf2) =:> controlPannelBus.out
+	change_value_23_6 + toString(Xf1) =:> controlPannelBus.out
+	change_value_23_7 + toString(Xl) =:> controlPannelBus.out
 
 	//The ivy bus
 	FillColor fill(32, 32, 104)
@@ -148,6 +165,6 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	}
 	
 	but_stop_formation.click -> {
-		this.prop + 1 =: this.prop
+		this.stop_formation =: this.controlPannelBus.out
 	}
 }
