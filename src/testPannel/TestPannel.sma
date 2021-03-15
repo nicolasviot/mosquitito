@@ -106,43 +106,45 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
     IvyAccess ivybus ("127.255.255.255:2010", "smala", "READY")
     {
-        // define your regexs 
-        // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
-        //FLIGHT_PARAM (ID 11)
+ //        // define your regexs 
+ //        // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
+ //        //FLIGHT_PARAM (ID 11)
         
-        String regexGetLatLonL ("ground NAV_STATUS 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetLatLonL ("ground FLIGHT_PARAM 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
         String regexGetBlockNumberL ("21 NAVIGATION (.*)")
-        String regexGetLatLonF1 ("ground NAV_STATUS 22 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetLatLonF1 ("ground FLIGHT_PARAM 22 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
         String regexGetBlockNumberF1 ("22 NAVIGATION (.*)")
-        String regexGetLatLonF2 ("ground NAV_STATUS 23 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetLatLonF2 ("ground FLIGHT_PARAM 23 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
         String regexGetBlockNumberF2 ("23 NAVIGATION (.*)")
     	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")
-    	String regexSlot("ground FORMATION_SLOT_TM (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-    }
+       
+
+
+        }
 
 
 
-    //creating a connector to display incomming messages in the text
-    // ivybus.in.regexGetLatLonL.[5] => lp.input
-    // ivybus.in.regexGetLatLonL.[6] => lp2.input
-    ivybus.in.regexGetLatLonL.[5] => this.map.layers.leader.latitude
-    ivybus.in.regexGetLatLonL.[6] => this.map.layers.leader.longitude
-    ivybus.in.regexGetLatLonL.[9] => this.map.layers.leader.gc.leaderDrone.rot
+ //    //creating a connector to display incomming messages in the text
+ //    // ivybus.in.regexGetLatLonL.[5] => lp.input
+ //    // ivybus.in.regexGetLatLonL.[6] => lp2.input
+ //    ivybus.in.regexGetLatLonL.[3] => this.map.layers.leader.latitude
+ //    ivybus.in.regexGetLatLonL.[4] => this.map.layers.leader.longitude
+ //    ivybus.in.regexGetLatLonL.[2] => this.map.layers.leader.gc.leaderDrone.rot
 
-	// ivybus.in.regexGetLatLonF1.[5] => lp.input
- //    ivybus.in.regexGetLatLonF1.[6] => lp2.input
-    ivybus.in.regexGetLatLonF1.[5] => this.map.layers.follower1.latitude
-    ivybus.in.regexGetLatLonF1.[6] => this.map.layers.follower1.longitude
-    ivybus.in.regexGetLatLonF1.[9] => this.map.layers.follower1.gc.f1Drone.rot
+	// // ivybus.in.regexGetLatLonF1.[5] => lp.input
+ // //    ivybus.in.regexGetLatLonF1.[6] => lp2.input
+    ivybus.in.regexGetLatLonF1.[3] => this.map.layers.follower1.latitude
+    ivybus.in.regexGetLatLonF1.[4] => this.map.layers.follower1.longitude
+    ivybus.in.regexGetLatLonF1.[2] => this.map.layers.follower1.gc.f1Drone.rot
 
 
-	// ivybus.in.regexGetLatLonF2.[5] => lp.input
- //    ivybus.in.regexGetLatLonF2.[6] => lp2.input
-    ivybus.in.regexGetLatLonF2.[5] => this.map.layers.follower2.latitude
-    ivybus.in.regexGetLatLonF2.[6] => this.map.layers.follower2.longitude
-    ivybus.in.regexGetLatLonF2.[9] => this.map.layers.follower2.gc.f2Drone.rot
+	// // ivybus.in.regexGetLatLonF2.[5] => lp.input
+ // //    ivybus.in.regexGetLatLonF2.[6] => lp2.input
+ //    ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.latitude
+ //    ivybus.in.regexGetLatLonF2.[4] => this.map.layers.follower2.longitude
+ //    ivybus.in.regexGetLatLonF2.[2] => this.map.layers.follower2.gc.f2Drone.rot
 
-    ivybus.in.regexSlot => lp4.input	
+ //    ivybus.in.regexSlot => lp4.input	
 
 
 

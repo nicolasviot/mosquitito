@@ -59,6 +59,10 @@ Component root {
 	cstr.yProp => ctrlPannel.Yf1
 	cstr2.xProp => ctrlPannel.Xf2
 	cstr2.yProp	=> ctrlPannel.Yf2
+	cstr.onSpike -> ctrlPannel.formationON1
+	cstr.offSpike -> ctrlPannel.formationOFF1
+	cstr2.onSpike -> ctrlPannel.formationON2
+	cstr2.offSpike -> ctrlPannel.formationOFF2
 
 
 	FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
