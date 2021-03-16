@@ -16,7 +16,7 @@ import Map.Map
 import Map.widgets.MapController
 import Map.widgets.Drone
 import Map.widgets.Link
-
+import Map.widgets.GridPannel
 _define_ 
 TestPannel(Process frame, Process map, double _x, double _y, double _width, double _height){
 
@@ -51,7 +51,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 	
 
 	
-	Drone m2drone(frame, 1000, 200, 0)
+	// Drone m2drone(frame, 1000, 200, 0)
 	/*
 	Drone m3drone(frame, 1200, 500, 0)
 	*/
@@ -103,8 +103,9 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 	Rectangle block4 ($bg.x + 200, $bg.y + 100, 20, 20)
 	Double dummy(21)
+	GridPannel gridPannel(this, $bg.x, $bg.y)
 
-    IvyAccess ivybus ("127.255.255.255:2010", "smala", "READY")
+    IvyAccess ivybus ("127.255.255.255:2010", "smalaTestPannel", "READY")
     {
  //        // define your regexs 
  //        // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
@@ -127,9 +128,9 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
  //    //creating a connector to display incomming messages in the text
  //    // ivybus.in.regexGetLatLonL.[5] => lp.input
  //    // ivybus.in.regexGetLatLonL.[6] => lp2.input
- //    ivybus.in.regexGetLatLonL.[3] => this.map.layers.leader.latitude
- //    ivybus.in.regexGetLatLonL.[4] => this.map.layers.leader.longitude
- //    ivybus.in.regexGetLatLonL.[2] => this.map.layers.leader.gc.leaderDrone.rot
+    ivybus.in.regexGetLatLonL.[3] => this.map.layers.leader.latitude
+    ivybus.in.regexGetLatLonL.[4] => this.map.layers.leader.longitude
+    ivybus.in.regexGetLatLonL.[2] => this.map.layers.leader.gc.leaderDrone.rot
 
 	// // ivybus.in.regexGetLatLonF1.[5] => lp.input
  // //    ivybus.in.regexGetLatLonF1.[6] => lp2.input
@@ -140,9 +141,9 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 	// // ivybus.in.regexGetLatLonF2.[5] => lp.input
  // //    ivybus.in.regexGetLatLonF2.[6] => lp2.input
- //    ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.latitude
- //    ivybus.in.regexGetLatLonF2.[4] => this.map.layers.follower2.longitude
- //    ivybus.in.regexGetLatLonF2.[2] => this.map.layers.follower2.gc.f2Drone.rot
+    ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.latitude
+    ivybus.in.regexGetLatLonF2.[4] => this.map.layers.follower2.longitude
+    ivybus.in.regexGetLatLonF2.[2] => this.map.layers.follower2.gc.f2Drone.rot
 
  //    ivybus.in.regexSlot => lp4.input	
 

@@ -27,36 +27,6 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	String start_formation("ground JUMP_TO_BLOCK 21 8")
 	String stop_formation("ground JUMP_TO_BLOCK 21 10")
 
-	String change_value_21_2("ground DL_SETTING 21 2 ")
-	String change_value_21_3("ground DL_SETTING 21 3 ")
-	String change_value_21_4("ground DL_SETTING 21 4 ")
-	String change_value_21_5("ground DL_SETTING 21 5 ")
-	String change_value_21_6("ground DL_SETTING 21 6 ")
-	String change_value_21_7("ground DL_SETTING 21 7 ")
-	
-	String change_value_22_2("ground DL_SETTING 22 2 ")
-	String change_value_22_3("ground DL_SETTING 22 3 ")
-	String change_value_22_4("ground DL_SETTING 22 4 ")
-	String change_value_22_5("ground DL_SETTING 22 5 ")
-	String change_value_22_6("ground DL_SETTING 22 6 ")
-	String change_value_22_7("ground DL_SETTING 22 7 ")
-	
-	String change_value_23_2("ground DL_SETTING 23 2 ")
-	String change_value_23_3("ground DL_SETTING 23 3 ")
-	String change_value_23_4("ground DL_SETTING 23 4 ")
-	String change_value_23_5("ground DL_SETTING 23 5 ")
-	String change_value_23_6("ground DL_SETTING 23 6 ")
-	String change_value_23_7("ground DL_SETTING 23 7 ")
-
-	/* 
-	variables index 
-		2 Yf2
-		3 Yf1
-		4 Yl
-		5 Xf2
-		6 Xf1
-		7 Xl
-	*/
 	Double Xl(0)
 	Double Yl(0)
 	Double Xf1(0)
@@ -78,29 +48,7 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	"21 FORMATION_SLOT_TM 21 " + toString(modeL_df.output) + " " + toString(Xl) + " " + toString(Yl) + " 0" => controlPannelBus.out
 	"22 FORMATION_SLOT_TM 22 " + toString(modeF1_df.output) + " " + toString(Xf1) + " " + toString(Yf1) + " 0"=> controlPannelBus.out
  	"23 FORMATION_SLOT_TM 23 " + toString(modeF2_df.output) + " " + toString(Xf2) + " " + toString(Yf2) + " 0"=> controlPannelBus.out
- // // 	/*
-	// change_value_21_2 + toString(Yf2) =:> controlPannelBus.out
-	// change_value_21_3 + toString(Yf1) =:> controlPannelBus.out
-	// change_value_21_4 + toString(Yl) =:> controlPannelBus.out
-	// change_value_21_5 + toString(Xf2) =:> controlPannelBus.out
-	// change_value_21_6 + toString(Xf1) =:> controlPannelBus.out
-	// change_value_21_7 + toString(Xl) =:> controlPannelBus.out
-	
-	// change_value_22_2 + toString(Yf2) =:> controlPannelBus.out
-	// change_value_22_3 + toString(Yf1) =:> controlPannelBus.out
-	// change_value_22_4 + toString(Yl) =:> controlPannelBus.out
-	// change_value_22_5 + toString(Xf2) =:> controlPannelBus.out
-	// change_value_22_6 + toString(Xf1) =:> controlPannelBus.out
-	// change_value_22_7 + toString(Xl) =:> controlPannelBus.out
 
-	// change_value_23_2 + toString(Yf2) =:> controlPannelBus.out
-	// change_value_23_3 + toString(Yf1) =:> controlPannelBus.out
-	// change_value_23_4 + toString(Yl) =:> controlPannelBus.out
-	// change_value_23_5 + toString(Xf2) =:> controlPannelBus.out
-	// change_value_23_6 + toString(Xf1) =:> controlPannelBus.out
-	// change_value_23_7 + toString(Xl) =:> controlPannelBus.out
-	// */
-	//The ivy bus
 	FillColor fill(32, 32, 104)
 	Rectangle bg($_x, $_y, $_width, $_height)
 

@@ -63,7 +63,14 @@ Component root {
 	cstr.offSpike -> ctrlPannel.formationOFF1
 	cstr2.onSpike -> ctrlPannel.formationON2
 	cstr2.offSpike -> ctrlPannel.formationOFF2
+	
+	cstr.xProp =:> testPannel.gridPannel.link1.dx
+	cstr.yProp =:> testPannel.gridPannel.link1.dy
+	cstr.headingProp =:> testPannel.gridPannel.link1.drot
 
+	cstr2.xProp =:> testPannel.gridPannel.link2.dx
+	cstr2.yProp =:> testPannel.gridPannel.link2.dy
+	cstr2.headingProp =:> testPannel.gridPannel.link2.drot
 
 	FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
 

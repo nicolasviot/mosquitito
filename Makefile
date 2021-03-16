@@ -27,6 +27,7 @@ srcs_sma :=	src/Slider.sma \
 			src/Map/kernel/Tile.sma src/Map/kernel/PanAndZoom.sma \
 			src/Map/utils/sketching/MyCircle.sma src/Map/utils/sketching/NewRectHandler.sma src/Map/utils/sketching/NewCircHandler.sma src/Map/utils/sketching/MyRectangle.sma \
 			src/Map/widgets/Link.sma \
+			src/Map/widgets/GridPannel.sma\
 			src/cookbook/MarkerAdd.sma \
 			src/Map/Map.sma \
 			src/testPannel/TestPannel.sma \
