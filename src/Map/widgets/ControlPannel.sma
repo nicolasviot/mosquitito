@@ -4,6 +4,8 @@ use display
 use gui
 use comms
 import Map.widgets.Button
+import Map.widgets.ConstraintBox
+
 
 _define_
 ControlPannel(Process frame, double _x, double _y, double _width, double _height)

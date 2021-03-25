@@ -43,7 +43,6 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   sliderY.output =:> yProp
   sliderZ.output =:> zProp
   sliderHeading.output =:> headingProp
-  
   xProp =:> xFormatter.input
   yProp =:> yFormatter.input
   zProp =:> zFormatter.input

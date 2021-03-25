@@ -20,28 +20,33 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	Double dx(0)
 	Double dy(0)
 	Double drot(0)
-
+	Double headingset(0)
 
 	firstdrone.x + dx =:> seconddrone.x
 	firstdrone.y + dy =:> seconddrone.y
-	firstdrone.rot + drot =:> seconddrone.rot
+	headingset? firstdrone.rot + drot : seconddrone.rot =:> seconddrone.rot
 
 
 	// firstdrone.x - ((firstdrone.x - seconddrone.x) * 3 / 4) =:> intermediaryX
 	// firstdrone.y - ((firstdrone.y - seconddrone.y) * 1 / 2) =:> intermediaryY
-	
-
-	Path path{
-		PathMove origin(0, 0)
-		// PathQuadratic destination(0, 0, 0, 0)
-		PathLine destination(0, 0)
+	Switch link_gc (visible) {
+    Component hidden {
+    }
+    Component visible {
+   
+		Path path{
+			PathMove origin(0, 0)
+			// PathQuadratic destination(0, 0, 0, 0)
+			PathLine destination(0, 0)
+		} 
 	}
+  }
 
 
-	firstdrone.cx =:> path.origin.x
-	firstdrone.cy =:> path.origin.y
-	seconddrone.cx =:> path.destination.x
-	seconddrone.cy =:> path.destination.y
+	firstdrone.cx =:> link_gc.visible.path.origin.x
+	firstdrone.cy =:> link_gc.visible.path.origin.y
+	seconddrone.cx =:> link_gc.visible.path.destination.x
+	seconddrone.cy =:> link_gc.visible.path.destination.y
 	// intermediaryX =:> path.destination.x1
 	// intermediaryY =:> path.destination.y1
 

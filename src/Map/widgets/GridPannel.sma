@@ -33,6 +33,9 @@ GridPannel(Process frame, double _x, double _y){
 	Link link1(frame, droneLeader, droneFollower1)
 	Link link2(frame, droneLeader, droneFollower2)
 
+	
+	
+
 
 	/* interface */
 /*
@@ -49,9 +52,9 @@ GridPannel(Process frame, double _x, double _y){
 	rotF2 aka droneFollower2.drot
 
 
-	
+*/	
 
-	Text(0, $_height * 0.95, "scale :1 unit = 1m")
+	Text legend(0, 300 * 0.95, "scale :1 unit = 1m")
 
-*/
+
 }

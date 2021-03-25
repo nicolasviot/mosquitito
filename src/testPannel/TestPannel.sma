@@ -76,21 +76,12 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 	//leaderDrone aka this.map.layers.leader.leaderDrone 
 	Link link1(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower1.gc.f1Drone)
 
-	Link link2(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower2.gc.f2Drone)
-
-/*
-	addChildrenTo this.map.layers {
-			MobileObject m1 (43.44918, 1.263429, this.map)
-			addChildrenTo m1.gc {
-				Drone leader(frame, 0, 0, 0)
-				}
-		}
-*/
+	 Link link2(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower2.gc.f2Drone)
 
 	/* ------- Log Printer to receive a Message in Terminal ---*/
-    LogPrinter lp ("ivybus: latitude ")
-    LogPrinter lp2 ("ivybus: longitude ")
-	LogPrinter lp3 ("Block status : ")
+    LogPrinter lp ("latitude 21 ")
+    LogPrinter lp2 ("latitude 22 ")
+	LogPrinter lp3 ("latitude 23 ")
 	LogPrinter lp4 ("slot message : ")
 
 
@@ -126,35 +117,18 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 
  //    //creating a connector to display incomming messages in the text
- //    // ivybus.in.regexGetLatLonL.[5] => lp.input
- //    // ivybus.in.regexGetLatLonL.[6] => lp2.input
-    ivybus.in.regexGetLatLonL.[3] => this.map.layers.leader.latitude
-    ivybus.in.regexGetLatLonL.[4] => this.map.layers.leader.longitude
-    ivybus.in.regexGetLatLonL.[2] => this.map.layers.leader.gc.leaderDrone.rot
+    ivybus.in.regexGetLatLonL.[4] => this.map.layers.leader.latitude
+    ivybus.in.regexGetLatLonL.[5] => this.map.layers.leader.longitude
+    ivybus.in.regexGetLatLonL.[3] => this.map.layers.leader.gc.leaderDrone.rot
 
-	// // ivybus.in.regexGetLatLonF1.[5] => lp.input
- // //    ivybus.in.regexGetLatLonF1.[6] => lp2.input
-    ivybus.in.regexGetLatLonF1.[3] => this.map.layers.follower1.latitude
-    ivybus.in.regexGetLatLonF1.[4] => this.map.layers.follower1.longitude
-    ivybus.in.regexGetLatLonF1.[2] => this.map.layers.follower1.gc.f1Drone.rot
+    ivybus.in.regexGetLatLonF1.[4] => this.map.layers.follower1.latitude
+    ivybus.in.regexGetLatLonF1.[5] => this.map.layers.follower1.longitude
+    ivybus.in.regexGetLatLonF1.[3] => this.map.layers.follower1.gc.f1Drone.rot
 
 
-	// // ivybus.in.regexGetLatLonF2.[5] => lp.input
- // //    ivybus.in.regexGetLatLonF2.[6] => lp2.input
-    ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.latitude
-    ivybus.in.regexGetLatLonF2.[4] => this.map.layers.follower2.longitude
-    ivybus.in.regexGetLatLonF2.[2] => this.map.layers.follower2.gc.f2Drone.rot
-
- //    ivybus.in.regexSlot => lp4.input	
-
-
-
-
-    //ivybus.in.regex.[7] => lp.input
-
-    //ivybus.in.regexGetBlockNumberLeader.[0] => lp3.input
-
-    
+    ivybus.in.regexGetLatLonF2.[4] => this.map.layers.follower2.latitude
+    ivybus.in.regexGetLatLonF2.[5] => this.map.layers.follower2.longitude
+    ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.gc.f2Drone.rot
 
 
     /*
