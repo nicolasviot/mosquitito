@@ -130,10 +130,4 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
     ivybus.in.regexGetLatLonF2.[5] => this.map.layers.follower2.longitude
     ivybus.in.regexGetLatLonF2.[3] => this.map.layers.follower2.gc.f2Drone.rot
 
-
-    /*
-	Button but2 (frame, "test ajout Trajectoire", $bg.x + 100, $bg.y + 50)
-	but2.click -> (this){		
-	}
-	*/
 }

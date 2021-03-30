@@ -15,6 +15,8 @@ Drone(Process frame, double _x, double _y, double _rotation){
 	Double cx (0)
 	Double cy (0)
 	Rotation _r(_rotation, 0, 0)
+	NoFill _
+	Rectangle bg(0, 0, 92, 78)
 
 	x aka _t.tx
 	y aka _t.ty

@@ -44,11 +44,17 @@ Component root {
 	MarkerAdd markerAdd (map)
 	//Test pannel
 	
-	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
 	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.24, 0, "X", "Y", "Z", "Heading")
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, $frame.height * 0.30)
 	ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.24, $frame.height * 0.30, "X", "Y", "Z", "Heading")
+TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $frame.width * 0.75, $frame.height * 0.25)
+	
+	
 
+	60 =: cstr.xProp
+	-60 =: cstr.yProp
+	-60 =: cstr2.xProp 
+	-60 =: cstr2.yProp
 	cstr.xProp =:> testPannel.link1.dx
 	cstr.yProp =:> testPannel.link1.dy
 	cstr.headingProp =:> testPannel.link1.drot
@@ -63,7 +69,8 @@ Component root {
 	cstr.offSpike -> ctrlPannel.formationOFF1
 	cstr2.onSpike -> ctrlPannel.formationON2
 	cstr2.offSpike -> ctrlPannel.formationOFF2
-	
+
+
 	cstr.xProp =:> testPannel.gridPannel.link1.dx
 	cstr.yProp =:> testPannel.gridPannel.link1.dy
 	cstr.headingProp =:> testPannel.gridPannel.link1.drot
@@ -72,6 +79,14 @@ Component root {
 	cstr2.yProp =:> testPannel.gridPannel.link2.dy
 	cstr2.headingProp =:> testPannel.gridPannel.link2.drot
 
+	// bi directional binding ?
+	
+	// testPannel.gridPannel.link1.dx =:> cstr.xProp
+	// testPannel.gridPannel.link1.dy =:> cstr.yProp
+
+	// testPannel.gridPannel.link2.dx =:> cstr2.xProp
+	// testPannel.gridPannel.link2.dy =:> cstr2.yProp
+	
 	FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
 
 }
