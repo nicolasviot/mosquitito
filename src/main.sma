@@ -71,15 +71,52 @@ TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height * 0.75, $fr
 	cstr2.offSpike -> ctrlPannel.formationOFF2
 
 
-	cstr.xProp =:> testPannel.gridPannel.link1.dx
-	cstr.yProp =:> testPannel.gridPannel.link1.dy
-	cstr.headingProp =:> testPannel.gridPannel.link1.drot
+	// cstr.xProp =:> testPannel.gridPannel.link1.dx
+	// cstr.yProp =:> testPannel.gridPannel.link1.dy
+	// cstr.headingProp =:> testPannel.gridPannel.link1.drot
 
-	cstr2.xProp =:> testPannel.gridPannel.link2.dx
-	cstr2.yProp =:> testPannel.gridPannel.link2.dy
-	cstr2.headingProp =:> testPannel.gridPannel.link2.drot
+	// cstr2.xProp =:> testPannel.gridPannel.link2.dx
+	// cstr2.yProp =:> testPannel.gridPannel.link2.dy
+	// cstr2.headingProp =:> testPannel.gridPannel.link2.drot
 
-	// bi directional binding ?
+	LogPrinter log("debug : ")
+	FSM pseudoBidirectionnal {
+		State idle{
+
+			cstr.xProp =:> testPannel.gridPannel.link1.dx
+			cstr.yProp =:> testPannel.gridPannel.link1.dy
+			cstr.headingProp =:> testPannel.gridPannel.link1.drot
+
+			cstr2.xProp =:> testPannel.gridPannel.link2.dx
+			cstr2.yProp =:> testPannel.gridPannel.link2.dy
+			cstr2.headingProp =:> testPannel.gridPannel.link2.drot
+
+
+		}
+
+		State notidle{
+
+			"entering grid to cstr" =: log.input
+
+			testPannel.gridPannel.link1.dx =:> cstr.xProp
+			testPannel.gridPannel.link1.dy =:> cstr.yProp
+
+			testPannel.gridPannel.link2.dx	=:> cstr2.xProp  
+			testPannel.gridPannel.link2.dy =:> cstr2.yProp
+ 
+
+
+		}
+
+		idle -> notidle (testPannel.gridPannel.bg.move)
+		notidle -> idle (cstr.background.bg.move)
+		notidle -> idle (cstr2.background.bg.move)
+
+	}
+
+
+
+	// bi directional binding ? move fsm
 	
 	// testPannel.gridPannel.link1.dx =:> cstr.xProp
 	// testPannel.gridPannel.link1.dy =:> cstr.yProp
