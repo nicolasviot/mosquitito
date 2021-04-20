@@ -22,7 +22,7 @@ MobileObject (double latitude_,double longitude_, Process map){
 	Scaling scaling (1,1,0,0)
 	p.x =:> t.tx
 	p.y =:> t.ty 
-	Pow pow (1.05,0)
+	Pow pow (1.001,0)
 	map.zoom  =:> pow.exponent
 	pow.result =:> scaling.sx,scaling.sy 
 

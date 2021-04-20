@@ -24,4 +24,6 @@ FlightPlan (Process frame, string name, double x_, double y_, double _width, dou
 
   Block takeoff(frame, "takeoff", "1", 20, 50, 360, 50)
   Block circle(frame, "Circle around Wp1", "2", 20, 130, 360, 50)  
+
+  
 }

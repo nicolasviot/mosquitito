@@ -61,7 +61,7 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	Spike formationOFF1
 	Spike formationON2
 	Spike formationOFF2
-
+/*
 	Button but_takeoff_leader(frame, "Leader takeoff", 20, 20)
 	Button but_takeoff_follower1(frame, "Follower1 takeoff", 140, 20)
 	Button but_takeoff_follower2(frame, "Follower1 takeoff", 260, 20)
@@ -122,4 +122,5 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	but_stop_formation.click -> {
 		this.stop_formation =: this.controlPannelBus.out
 	}
+*/
 }

@@ -16,7 +16,7 @@ import Map.Map
 import Map.widgets.MapController
 import Map.widgets.Drone
 import Map.widgets.Link
-import Map.widgets.GridPannel
+
 _define_ 
 TestPannel(Process frame, Process map, double _x, double _y, double _width, double _height){
 
@@ -29,18 +29,6 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 	width aka bg.width
 	height aka bg.height
 	map aka map	
-
-
-	Button but (frame, "test ajout MobileObject", $bg.x + 50, $bg.y + 50)
-	but.click -> (this) {
-		
-		addChildrenTo this.map.layers {
-			MobileObject m (43.44918, 1.263429, this.map)
-			addChildrenTo m.gc {
-				Circle form (0, 0, 100)
-			}
-		}
-	}
 
 
 	//Leader
@@ -62,21 +50,30 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 		MobileObject leader (43.44918, 1.263429, this.map)
 		addChildrenTo leader.gc {
 			Drone leaderDrone(frame, 0, 0, 0)
+			198 =: leaderDrone.dronefill.r
+			0 =: leaderDrone.dronefill.g
+			0 =: leaderDrone.dronefill.b
 		}
 		MobileObject follower1 (43.44918, 1.263429, this.map)
 		addChildrenTo follower1.gc{
 			Drone f1Drone(frame, 0, 0, 0)
+			0 =: f1Drone.dronefill.r
+			198 =: f1Drone.dronefill.g
+			0 =: f1Drone.dronefill.b
 		}
 		MobileObject follower2 (43.44918, 1.263429, this.map)
 		addChildrenTo follower2.gc{
 			Drone f2Drone(frame, 1200, 800, 0)
+			0 =: f2Drone.dronefill.r
+			0 =: f2Drone.dronefill.g
+			198 =: f2Drone.dronefill.b
 		}
 	}
 
 	//leaderDrone aka this.map.layers.leader.leaderDrone 
-	Link link1(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower1.gc.f1Drone)
+	//Link link1(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower1.gc.f1Drone)
 
-	 Link link2(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower2.gc.f2Drone)
+	 //Link link2(frame, this.map.layers.leader.gc.leaderDrone, this.map.layers.follower2.gc.f2Drone)
 
 	/* ------- Log Printer to receive a Message in Terminal ---*/
     LogPrinter lp ("latitude 21 ")
@@ -86,15 +83,8 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 
 	FillColor bg2 (192, 128, 64)
-	Rectangle block1 ($bg.x + 50, $bg.y + 100, 20, 20)
 
-	Rectangle block2 ($bg.x + 100, $bg.y + 100, 20, 20)
 
-	Rectangle block3 ($bg.x + 150, $bg.y + 100, 20, 20)
-
-	Rectangle block4 ($bg.x + 200, $bg.y + 100, 20, 20)
-	Double dummy(21)
-	GridPannel gridPannel(this, $bg.x, $bg.y)
 
     IvyAccess ivybus ("127.255.255.255:2010", "smalaTestPannel", "READY")
     {
