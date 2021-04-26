@@ -28,19 +28,21 @@ GridPannel(Process frame, double _x, double _y){
 		insert interface for 2 drones
 
 	*/
-
+	Double width(76)
+	Double height(68)
 	
-	Drone droneLeader(frame, 190, 140 , 0)
+	Drone droneLeader(frame, 190 - $width/2, 140 - $height/2 , 0)
 	198 =: droneLeader.dronefill.r
 	0 =: droneLeader.dronefill.g
 	0 =: droneLeader.dronefill.b
+	
 
-	Drone droneFollower1(frame, 140, 200, 0)
+	Drone droneFollower1(frame, 140 - $width/2, 200 - $height/2, 0)
 	0 =:droneFollower1.dronefill.r
 	198 =: droneFollower1.dronefill.g
 	0 =: droneFollower1.dronefill.b
 
-	Drone droneFollower2(frame, 260, 200, 0)
+	Drone droneFollower2(frame, 260 - $width/2, 200 - $height/2, 0)
 	0 =:droneFollower2.dronefill.r
 	0 =: droneFollower2.dronefill.g
 	198 =: droneFollower2.dronefill.b
@@ -48,25 +50,31 @@ GridPannel(Process frame, double _x, double _y){
 	Link link1(frame, droneLeader, droneFollower1)
     Link link2(frame, droneLeader, droneFollower2)
 	
-	FSM dragLeader{
-		State idle
-		State drag{
+	// FSM dragLeader{
+	// 	State idle
+	// 	State drag{
 
-			// // Modulo modx (0, 1)
-			// this.bg.move.x - _t.tx - droneLeader.width / 2 =:> modx.left
-			// // Modulo mody (0, 1)
-			// this.bg.move.y - _t.ty - droneLeader.height / 2 =:> mody.left
+	// 		// // Modulo modx (0, 1)
+	// 		// this.bg.move.x - _t.tx - droneLeader.width / 2 =:> modx.left
+	// 		// // Modulo mody (0, 1)
+	// 		// this.bg.move.y - _t.ty - droneLeader.height / 2 =:> mody.left
 
-			// this.bg.move.x - _t.tx - droneLeader.width / 2 - modx.result =:> droneLeader.x
-			// this.bg.move.y - _t.ty - droneLeader.height /2 - mody.result =:> droneLeader.y
-			this.bg.move.x - _t.tx - droneLeader.width / 2 =:> droneLeader.x
-			this.bg.move.y - _t.ty - droneLeader.height /2  =:> droneLeader.y
-		}
+	// 		// this.bg.move.x - _t.tx - droneLeader.width / 2 - modx.result =:> droneLeader.x
+	// 		// this.bg.move.y - _t.ty - droneLeader.height /2 - mody.result =:> droneLeader.y
+	// 		frame.move.x - _t.tx - droneLeader.width / 2 =:> droneLeader.x
+	// 		frame.move.y - _t.ty - droneLeader.height /2  =:> droneLeader.y
+	// 	}
 
-		idle -> drag (droneLeader.bg.press)
-		drag -> idle (droneLeader.bg.release)
-	}
+	// 	idle -> drag (droneLeader.bg.press)
+	// 	drag -> idle (droneLeader.bg.release)
+	// }
 
+	Double maxXbound(150)
+	Double maxYbound(150)
+	Double minXbound(-150)
+	Double minYbound(-150)
+	Double buffX(0)
+	Double buffY(0)
 	FSM dragFollower1{
 		State idle{
 			//frame.move =:> pos0
@@ -76,14 +84,18 @@ GridPannel(Process frame, double _x, double _y){
 		State drag{
 
 			// Modulo modx (0, 20)
-			// this.bg.move.x - _t.tx - droneFollower1.width / 2 =:> modx.left
+			// frame.move.x - _t.tx - droneFollower1.width / 2 =:> modx.left
 			// Modulo mody (0, 20)
-			// this.bg.move.y - _t.ty - droneFollower1.height / 2 =:> mody.left
+			// frame.move.y - _t.ty - droneFollower1.height / 2 =:> mody.left
 
 			// this.bg.move.x - _t.tx - droneFollower1.width / 2 - modx.result - droneLeader.x =:> this.link1.dx
 			// this.bg.move.y - _t.ty - droneFollower1.height /2 - mody.result - droneLeader.y =:> this.link1.dy
-			this.bg.move.x - _t.tx - droneFollower1.width / 2 -  droneLeader.x =:> this.link1.dx
-			this.bg.move.y - _t.ty - droneFollower1.height /2 -  droneLeader.y =:> this.link1.dy
+			
+			frame.move.x - _t.tx - droneFollower1.width / 2 -  droneLeader.x =:> buffX
+			frame.move.y - _t.ty - droneFollower1.height /2 -  droneLeader.y =:> buffY
+
+			(buffX>maxXbound)?maxXbound:(buffX<minXbound?minXbound:buffX) =:> this.link1.dx
+			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link1.dy
 			//diff frame pos0
 		}
 
@@ -95,13 +107,19 @@ GridPannel(Process frame, double _x, double _y){
 		State idle
 		State drag{
 
-			Modulo modx (0, 20)
-			this.bg.move.x - _t.tx - droneFollower2.width / 2 =:> modx.left
-			Modulo mody (0, 20)
-			this.bg.move.y - _t.ty - droneFollower2.height / 2 =:> mody.left
+			// Modulo modx (0, 20)
+			// frame.move.x - _t.tx - droneFollower2.width / 2 =:> modx.left
+			// Modulo mody (0, 20)
+			// frame.move.y - _t.ty - droneFollower2.height / 2 =:> mody.left
 
-			this.bg.move.x - _t.tx - droneFollower2.width / 2 - modx.result - droneLeader.x =:> this.link2.dx
-			this.bg.move.y - _t.ty - droneFollower2.height /2 - mody.result - droneLeader.y =:> this.link2.dy
+			// frame.move.x - _t.tx - droneFollower2.width / 2 - modx.result - droneLeader.x =:> this.link2.dx
+			// frame.move.y - _t.ty - droneFollower2.height /2 - mody.result - droneLeader.y =:> this.link2.dy
+
+			frame.move.x - _t.tx - droneFollower2.width / 2 -  droneLeader.x =:> buffX
+			frame.move.y - _t.ty - droneFollower2.height /2 -  droneLeader.y =:> buffY
+
+			(buffX>maxXbound)?maxXbound:(buffX<minXbound?minXbound:buffX) =:> this.link2.dx
+			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link2.dy
 		}
 
 		idle -> drag (droneFollower2.bg.press)
@@ -109,6 +127,20 @@ GridPannel(Process frame, double _x, double _y){
 	}
 
 
+
+
+	FSM shadowDisplayLeader{
+
+		State idle {
+			1 =: droneLeader.shadow
+		}
+		State shadowed {
+			0 =: droneLeader.shadow
+		}
+		idle -> shadowed (droneLeader.bg.press)
+		shadowed -> idle (droneLeader.bg.release)
+
+	}
 	
 	
 

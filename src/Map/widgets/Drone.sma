@@ -19,7 +19,7 @@ Drone(Process frame, double _x, double _y, double _rotation){
 	Rectangle bg(0, 0, 92, 78)
 	Spike toogleShadow
 	Spike untoogleShadow
-
+	Double shadow (1)
 	x aka _t.tx
 	y aka _t.ty
 	rot aka _r.a
@@ -35,37 +35,10 @@ Drone(Process frame, double _x, double _y, double _rotation){
 	// FillOpacity _(0.5)
 	// g << svgdrone
 		
-	FillOpacity _ (0.95)
-	FillColor dronefill2 (198, 198, 198)
 	FillColor dronefill (198, 198, 198)
 
-		
-	// Switch myswitch(shadow){
-	// 	Component default{
-			
-	// 	}
-	// 	Component shadow{
-	// 		FillColor _ (48, 48, 48)
-	// 		FillOpacity _(0.5)
-	// 	}
-
-	// }
 
 	g << svgdrone
-	
- 	// FSM shadow_fsm{
- 		
- 	// 	State default {
- 	// 		g << svgdrone
-		// }
- 	// 	State shadow {
- 	// 		FillColor _ (48, 48, 48)
- 	// 		FillOpacity _(0.5)
- 	// 		g << svgdrone
- 	// 	}
- 	// 	default -> shadow (toogleShadow)
- 	// 	shadow -> default (untoogleShadow)
- 	// }
 
-
+	shadow?1:0.5 =:> g.path_svg_drone.opacity 
 }

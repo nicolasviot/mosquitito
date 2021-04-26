@@ -16,6 +16,7 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   Spike onSpike
   Spike offSpike
   Spike noSpike
+  Spike update_slider
   background << svg.background
   properties << svg.constraintprop
   background.constraintname.text = $label
@@ -43,6 +44,13 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   sliderX.output =:> xProp  
   sliderY.output =:> yProp
   sliderZ.output =:> zProp
+  
+
+  (xProp + 150) * 200 / 300=:> sliderX.gobj.t_thumb.tx
+  (yProp + 150) * 200 / 300=:> sliderY.gobj.t_thumb.tx
+  (zProp + 150) * 200 / 300=:> sliderZ.gobj.t_thumb.tx
+
+
   sliderHeading.output =:> headingProp
   
   xProp =:> xFormatter.input

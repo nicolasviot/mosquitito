@@ -39,9 +39,9 @@ Component root {
 	//Simple map component (upper right)
 
 
-	// Map map(frame,"FR", 16, 43.462239, 1.272804, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 1) 
-	// frame.width * 0.25 => map.t.tx
-	// MapController mapController (map)
+	 Map map(frame,"FR", 16, 43.462239, 1.272804, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 1) 
+	 frame.width * 0.25 => map.t.tx
+	 MapController mapController (map)
 	//MarkerAdd markerAdd (map)
 
 	//background
@@ -51,7 +51,7 @@ Component root {
 	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, $frame.height * 0.05, "X", "Y", "Z", "Heading")
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0)
 	ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.25, "X", "Y", "Z", "Heading")
-	// TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
+	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
 	GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.70)
 	
 
