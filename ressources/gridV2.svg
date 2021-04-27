@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <g id="Tracé_2" data-name="Tracé 2" fill="#eaeaea">
+    <path d="M 353 299.5 L 47 299.5 C 40.7223014831543 299.5 34.6327018737793 298.2705993652344 28.90024948120117 295.8460083007813 C 23.36310005187988 293.5039978027344 18.39015007019043 290.1510925292969 14.11954975128174 285.8804626464844 C 9.848899841308594 281.60986328125 6.495999813079834 276.6369018554688 4.153999805450439 271.0997619628906 C 1.729400038719177 265.3673095703125 0.5 259.2777099609375 0.5 253 L 0.5 47 C 0.5 40.7223014831543 1.729400038719177 34.6327018737793 4.153999805450439 28.90024948120117 C 6.495999813079834 23.36310005187988 9.848899841308594 18.39015007019043 14.11954975128174 14.11954975128174 C 18.39015007019043 9.848899841308594 23.36310005187988 6.495999813079834 28.90024948120117 4.153999805450439 C 34.6327018737793 1.729400038719177 40.7223014831543 0.5 47 0.5 L 353 0.5 C 359.2777099609375 0.5 365.3673095703125 1.729400038719177 371.0997619628906 4.153999805450439 C 376.6369018554688 6.495999813079834 381.60986328125 9.848899841308594 385.8804626464844 14.11954975128174 C 390.1510925292969 18.39015007019043 393.5039978027344 23.36310005187988 395.8460083007813 28.90024948120117 C 398.2705993652344 34.6327018737793 399.5 40.7223014831543 399.5 47 L 399.5 253 C 399.5 259.2777099609375 398.2705993652344 265.3673095703125 395.8460083007813 271.0997619628906 C 393.5039978027344 276.6369018554688 390.1510925292969 281.60986328125 385.8804626464844 285.8804626464844 C 381.60986328125 290.1510925292969 376.6369018554688 293.5039978027344 371.0997619628906 295.8460083007813 C 365.3673095703125 298.2705993652344 359.2777099609375 299.5 353 299.5 Z" stroke="none"/>
+    <path d="M 47 1 C 40.78961181640625 1 34.7655029296875 2.216094970703125 29.09500122070313 4.614501953125 C 23.61749267578125 6.931304931640625 18.69793701171875 10.24819946289063 14.47311401367188 14.47311401367188 C 10.24819946289063 18.69793701171875 6.931304931640625 23.61749267578125 4.614501953125 29.09500122070313 C 2.216094970703125 34.7655029296875 1 40.78961181640625 1 47 L 1 253 C 1 259.2103881835938 2.216094970703125 265.2344970703125 4.614501953125 270.9049987792969 C 6.931304931640625 276.3825073242188 10.24819946289063 281.3020629882813 14.47311401367188 285.5268859863281 C 18.69793701171875 289.7518005371094 23.61749267578125 293.0686950683594 29.09500122070313 295.385498046875 C 34.7655029296875 297.7839050292969 40.78961181640625 299 47 299 L 353 299 C 359.2103881835938 299 365.2344970703125 297.7839050292969 370.9049987792969 295.385498046875 C 376.3825073242188 293.0686950683594 381.3020629882813 289.7518005371094 385.5268859863281 285.5268859863281 C 389.7518005371094 281.3020629882813 393.0686950683594 276.3825073242188 395.385498046875 270.9049987792969 C 397.7839050292969 265.2344970703125 399 259.2103881835938 399 253 L 399 47 C 399 40.78961181640625 397.7839050292969 34.7655029296875 395.385498046875 29.09500122070313 C 393.0686950683594 23.61749267578125 389.7518005371094 18.69793701171875 385.5268859863281 14.47311401367188 C 381.3020629882813 10.24819946289063 376.3825073242188 6.931304931640625 370.9049987792969 4.614501953125 C 365.2344970703125 2.216094970703125 359.2103881835938 1 353 1 L 47 1 M 47 0 L 353 0 C 378.9573974609375 0 400 21.0426025390625 400 47 L 400 253 C 400 278.9573974609375 378.9573974609375 300 353 300 L 47 300 C 21.0426025390625 300 0 278.9573974609375 0 253 L 0 47 C 0 21.0426025390625 21.0426025390625 0 47 0 Z" stroke="none" fill="#707070"/>
+  </g>
+  <g id="Composant_1_3" data-name="Composant 1 – 3" transform="translate(192 52.191)" opacity="0.31">
+    <line id="Ligne_1" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_4" data-name="Composant 1 – 4" transform="translate(57 52.191)" opacity="0.31">
+    <line id="Ligne_1-2" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-2" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_5" data-name="Composant 1 – 5" transform="translate(57 142.191)" opacity="0.31">
+    <line id="Ligne_1-3" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-3" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_6" data-name="Composant 1 – 6" transform="translate(57 232.191)" opacity="0.31">
+    <line id="Ligne_1-4" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-4" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_7" data-name="Composant 1 – 7" transform="translate(192 232.191)" opacity="0.31">
+    <line id="Ligne_1-5" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-5" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_8" data-name="Composant 1 – 8" transform="translate(307 232.191)" opacity="0.31">
+    <line id="Ligne_1-6" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-6" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_9" data-name="Composant 1 – 9" transform="translate(307 142.191)" opacity="0.31">
+    <line id="Ligne_1-7" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-7" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_10" data-name="Composant 1 – 10" transform="translate(307 52.191)" opacity="0.31">
+    <line id="Ligne_1-8" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-8" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <g id="Composant_1_1" data-name="Composant 1 – 1" transform="translate(192 143.191)" opacity="0.31">
+    <line id="Ligne_1-9" data-name="Ligne 1" x2="16" transform="translate(0 6.809)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+    <path id="Tracé_1-9" data-name="Tracé 1" d="M0,0V14.5" transform="translate(8)" fill="none" stroke="#c2b5b5" stroke-linecap="round" stroke-width="3"/>
+  </g>
+  <line id="Ligne_2" data-name="Ligne 2" x2="64" transform="translate(16 277)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Ligne_3" data-name="Ligne 3" y2="8" transform="translate(16 273)" fill="none" stroke="#707070" stroke-width="1"/>
+  <line id="Ligne_4" data-name="Ligne 4" y2="8" transform="translate(80 273)" fill="none" stroke="#707070" stroke-width="1"/>
+  <text id="scale_text" data-name="50 m" transform="translate(37 274)" fill="#707070" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">50 m</tspan></text>
+</svg>
