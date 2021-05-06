@@ -54,7 +54,7 @@ Component root {
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
 	GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.70)
 	
-
+	testPannel.leaderFixeReleased -> ctrlPannel.abortMission
 	60 =: cstr.xProp
 	-60 =: cstr.yProp
 	-60 =: cstr2.xProp 
@@ -98,6 +98,7 @@ Component root {
 
 			gridPannel.link2.dx	=:> cstr2.xProp  
 			gridPannel.link2.dy =:> cstr2.yProp
+			
  
 
 

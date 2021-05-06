@@ -61,6 +61,8 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	Spike formationOFF1
 	Spike formationON2
 	Spike formationOFF2
+
+	Spike abortMission
 /*
 	Button but_takeoff_leader(frame, "Leader takeoff", 20, 20)
 	Button but_takeoff_follower1(frame, "Follower1 takeoff", 140, 20)
