@@ -52,7 +52,7 @@ Component root {
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0)
 	ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.25, "X", "Y", "Z", "Heading")
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
-	GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.70)
+	GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50)
 	
 	testPannel.leaderFixeReleased -> ctrlPannel.abortMission
 	60 =: cstr.xProp

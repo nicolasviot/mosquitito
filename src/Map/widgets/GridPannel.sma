@@ -65,8 +65,8 @@ GridPannel(Process frame, double _x, double _y){
 	// 		frame.move.y - _t.ty - droneLeader.height /2  =:> droneLeader.y
 	// 	}
 
-	// 	idle -> drag (droneLeader.bg.press)
-	// 	drag -> idle (droneLeader.bg.release)
+	// 	idle -> drag (droneLeader.bg.left.press)
+	// 	drag -> idle (droneLeader.bg.left.release)
 	// }
 
 	Double maxXbound(150)
@@ -99,8 +99,8 @@ GridPannel(Process frame, double _x, double _y){
 			//diff frame pos0
 		}
 
-		idle -> drag (droneFollower1.bg.press)
-		drag -> idle (droneFollower1.bg.release)
+		idle -> drag (droneFollower1.bg.left.press)
+		drag -> idle (droneFollower1.bg.left.release)
 	}
 
 	FSM dragFollower2{
@@ -122,8 +122,8 @@ GridPannel(Process frame, double _x, double _y){
 			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link2.dy
 		}
 
-		idle -> drag (droneFollower2.bg.press)
-		drag -> idle (droneFollower2.bg.release)
+		idle -> drag (droneFollower2.bg.left.press)
+		drag -> idle (droneFollower2.bg.left.release)
 	}
 
 
@@ -137,8 +137,8 @@ GridPannel(Process frame, double _x, double _y){
 		State shadowed {
 			0 =: droneLeader.shadow
 		}
-		idle -> shadowed (droneLeader.bg.press)
-		shadowed -> idle (droneLeader.bg.release)
+		idle -> shadowed (droneLeader.bg.left.press)
+		shadowed -> idle (droneLeader.bg.left.release)
 
 	}
 	

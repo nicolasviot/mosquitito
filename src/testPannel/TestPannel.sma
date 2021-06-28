@@ -108,6 +108,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 
 	Rectangle target(_x + 800, _y - 200, 200, 200)
 	Spike leaderFixeReleased
+	
 
 	LogPrinter logcoord("screen coordinates")
 	Gps2Screen targetConverter(this.map)
@@ -139,7 +140,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 			// ($target.x < $frame.move.x) && ($frame.move.x < $target.x + $target.width) && ($target.y < $frame.move.y) && ($frame.move.y < $target.y + $target.height)?1:0 =:> onTarget
 			
 		}
-		idle -> dragging (leaderFixe.bg.press)
+		idle -> dragging (leaderFixe.bg.left.press)
 		dragging -> idle (dragging.shadowLeaderFixe.bg.release, leaderFixeReleased)
 	}
 
@@ -156,7 +157,7 @@ leaderFixeReleased -> (this){
 // 		NoOutline _ 
 // 		Drone dummynewdrone(this.frame, $this.x +400, $this.y - 600, 0)
 // 	}
-// }
+//  }
 
 	// addChildrenTo this.map.layers {
 	// 	MobileObject leaderFixe(43.44918, 1.263429, this.map)

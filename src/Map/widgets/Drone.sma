@@ -3,7 +3,7 @@ use core
 use base
 use display
 use gui
-
+import Map.widgets.Menu
 
 
 _define_
@@ -41,4 +41,22 @@ Drone(Process frame, double _x, double _y, double _rotation){
 	g << svgdrone
 
 	shadow?1:0.5 =:> g.path_svg_drone.opacity 
+
+
+	Spike rightclicked
+	Spike item1Selected
+
+
+	FSM rightclick {
+		State idle
+		State pressed
+		State opened {
+			Menu menu(this, $this.bg.press.x + $this.bg.width / 2, $this.bg.press.y + $this.bg.height / 2, "launch", "land", "hold")
+		}
+	idle -> pressed(bg.right.press)
+	pressed -> opened(bg.right.release, rightclicked)
+	opened -> idle(opened.menu.menuItem1Selected, item1Selected)
+
+
+	}
 }
