@@ -1,0 +1,122 @@
+<!DOCTYPE flight_plan SYSTEM "../flight_plan.dtd">
+
+<flight_plan alt="250" ground_alt="185" lat0="43.46223" lon0="1.27289" max_dist_from_home="400" name="formation flight" qfu="270" security_height="25">
+  <waypoints>
+    <waypoint name="HOME" x="0.0" y="0.0"/>
+    <waypoint name="mid" x="72.9" y="133.0"/>
+    <waypoint name="wp0" x="161.9" y="35.9"/>
+    <waypoint name="wp1" x="225.5" y="159.2"/>
+    <waypoint name="wp2" x="57.4" y="290.9"/>
+    <waypoint name="wp3" x="-79.8" y="220.4"/>
+    <waypoint name="wp4" x="20.4" y="148.4"/>
+    <waypoint name="wp5" x="22.9" y="69.5"/>
+    <waypoint name="STDBY" x="49.5" y="100.1"/>
+    <waypoint name="1" x="10.1" y="189.9"/>
+    <waypoint name="2" x="132.3" y="139.1"/>
+    <waypoint alt="215.0" name="IAF" x="239.7" y="92.9"/>
+    <waypoint alt="210.0" name="AF" x="187.0" y="-2.8"/>
+    <waypoint alt="185.0" name="RWAY" x="42.3" y="47.5"/>
+    <waypoint name="CLIMB" x="-114.5" y="162.3"/>
+  </waypoints>
+  <variables>
+    <variable var="Xl" min="-50" max="50" init="0" step="1"/>
+
+    <variable var="Xf1" min="-50" max="50" init="-20" step="1"/>
+
+    <variable var="Xf2" min="-50" max="50" init="20" step="1"/>
+
+    <variable var="Yl" min="-50" max="50" init="10" step="1"/>
+
+    <variable var="Yf1" min="-50" max="50" init="-20" step="1"/>
+
+    <variable var="Yf2" min="-50" max="50" init="-20" step="1"/>
+
+  </variables>
+  <modules>
+    <module name="traffic_info"/>
+    <module name="formation_flight"/>
+  </modules>
+  <exceptions>
+    <!--exception cond="datalink_time > 22" deroute="Standby"/-->
+  </exceptions>
+  <blocks>
+    <block name="Wait GPS">
+      <set value="1" var="autopilot.kill_throttle"/>
+      <while cond="!GpsFixValid()"/>
+    </block>
+    <block name="Geo init">
+      <while cond="LessThan(NavBlockTime(), 10)"/>
+      <call_once fun="NavSetGroundReferenceHere()"/>
+    </block>
+    <block name="Holding point">
+      <!--set var="nav_mode" value="NAV_MODE_ROLL"/-->
+      <set value="1" var="autopilot.kill_throttle"/>
+      <set var="autopilot.launch" value="1"/>
+      <attitude roll="0" throttle="0" vmode="throttle"/>
+    </block>
+    <block key="t" name="Takeoff" strip_button="Takeoff (wp CLIMB)" strip_icon="takeoff.png" group="home">
+      <exception cond="GetPosAlt() > GetAltRef()+25" deroute="Standby"/>
+      <set value="0" var="autopilot.kill_throttle"/>
+      <set value="0" var="autopilot.flight_time"/>
+      <go from="HOME" throttle="1.0" vmode="throttle" wp="CLIMB" pitch="15"/>
+    </block>
+        <block key="Ctrl+a" name="Standby" strip_button="Standby" strip_icon="home.png" group="home">
+      <circle radius="nav_radius" wp="STDBY"/>
+    </block>
+    <block name="init formation">
+      <!-- formation_init() is already called -->
+      <!-- init formation by adding knew slots in the formation -->
+      <!-- three UAVs are expected but it can work with 1 or 2 -->
+      <call_once fun="add_slot(21, Xl, Yl, 0)"/>
+      <call_once fun="add_slot(22, Xf1, Yf1, 10)"/>
+      <call_once fun="add_slot(23, Xf2, Yf2, -10)"/>
+      <set var="form_mode" value="0"/> <!-- form mode global add_slot(id, east, north, up) -->
+      <set var="leader_id" value="21"/> <!-- leader id -->
+      <set var="nav_mode" value="NAV_MODE_ROLL"/>
+    </block>
+    <block name="switch formation">
+      <!-- formation_init() is already called -->
+      <!-- init formation by adding knew slots in the formation -->
+      <!-- three UAVs are expected but it can work with 1 or 2 -->
+      <call_once fun="add_slot(21, Xl, Yl, 0)"/>
+      <call_once fun="add_slot(22, Xf1, Yf1, -10)"/>
+      <call_once fun="add_slot(23, Xf2, Yf2, 10)"/>
+      <set var="form_mode" value="0"/> <!-- form mode global add_slot(id, east, north, up) -->
+      <set var="leader_id" value="21"/> <!-- leader id -->
+      <set var="nav_mode" value="NAV_MODE_ROLL"/> <!-- alternate navigation mode should be set in formation flight -->
+    </block>
+    <block name="cirle"> <!-- waiting circle out of formation -->
+      <circle radius="nav_radius" until="FALSE" wp="mid"/>
+    </block>
+    <block name="start formation">
+      <call_once fun="start_formation()"/> <!-- inform other AC that formation is started -->
+    </block>
+    <block name="traj" pre_call="formation_pre_call()" post_call="formation_flight()"> <!-- formation flight is call after all other navigation tasks -->
+      <go from="wp5" hmode="route" wp="wp0"/>
+      <go from="wp0" hmode="route" wp="wp1"/>
+      <go from="wp1" hmode="route" wp="wp2"/>
+      <go from="wp2" hmode="route" wp="wp3"/>
+      <go from="wp3" hmode="route" wp="wp4"/>
+      <go from="wp4" hmode="route" wp="wp5"/>
+      <deroute block="traj"/>
+    </block>
+    <block name="stop formation"> <!-- when leader stop the formation, the other AC will do the same -->
+      <call_once fun="stop_formation()"/>
+    </block>
+
+    <block name="Big circle">
+      <circle radius="300" until="FALSE" wp="HOME"/>
+    </block>
+    <block name="land"> <!-- basic landing function out of formation -->
+      <exception cond="(GROUND_ALT+10> GetPosAlt())" deroute="stop"/>
+      <circle radius="50" until="WaypointAlt(WP_IAF) > GetPosAlt()" wp="IAF"/>
+      <go alt="WaypointAlt(WP_AF)" wp="AF"/>
+      <go from="AF" hmode="route" vmode="glide" wp="RWAY"/>
+    </block>
+    <block name="stop">
+      <attitude roll="0.0" throttle="0.0" until="FALSE" vmode="throttle"/>
+    </block>
+  </blocks>
+</flight_plan>
+
+
