@@ -62,6 +62,58 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	Spike formationON2
 	Spike formationOFF2
 
+	Spike gotoblock1_drone1
+	Spike gotoblock2_drone1
+	Spike gotoblock3_drone1
+
+	Spike gotoblock1_drone2
+	Spike gotoblock2_drone2
+	Spike gotoblock3_drone2
+
+	Spike gotoblock1_drone3
+	Spike gotoblock2_drone3
+	Spike gotoblock3_drone3
+
+	LogPrinter logger ("source : ")
+	
+	gotoblock1_drone1 -> {
+		"block 1 drone 1" =: logger.input
+
+	}
+
+	gotoblock2_drone1 -> {
+		"block 2 drone 1" =: logger.input
+	}
+
+	gotoblock3_drone1 -> {
+		"block 3 drone 1" =: logger.input
+	}
+
+	gotoblock1_drone2 -> {
+		"block 1 drone 2" =: logger.input
+	}
+
+	gotoblock2_drone2 -> {
+		"block 2 drone 2" =: logger.input
+	}
+
+	gotoblock3_drone2 -> {
+		"block 3 drone 2" =: logger.input
+	}
+
+	gotoblock1_drone3 -> {
+		"block 1 drone 3" =: logger.input
+	}
+
+	gotoblock2_drone3 -> {
+		"block 2 drone 3" =: logger.input
+	}
+
+	gotoblock3_drone3 -> {
+		"block 3 drone 3" =: logger.input
+	}
+
+
 	Spike abortMission
 /*
 	Button but_takeoff_leader(frame, "Leader takeoff", 20, 20)

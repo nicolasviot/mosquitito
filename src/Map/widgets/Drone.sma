@@ -29,12 +29,6 @@ Drone(Process frame, double _x, double _y, double _rotation){
     height / 2 =:> _r.cy
 	svgdrone  = loadFromXML ("./ressources/drone.svg")
     
-	// g << svgdrone
-	
-	// FillColor _ (48, 48, 48)
-	// FillOpacity _(0.5)
-	// g << svgdrone
-		
 	FillColor dronefill (198, 198, 198)
 
 
@@ -45,6 +39,8 @@ Drone(Process frame, double _x, double _y, double _rotation){
 
 	Spike rightclicked
 	Spike item1Selected
+	Spike item2Selected
+	Spike item3Selected
 
 
 	FSM rightclick {
@@ -55,8 +51,29 @@ Drone(Process frame, double _x, double _y, double _rotation){
 		}
 	idle -> pressed(bg.right.press)
 	pressed -> opened(bg.right.release, rightclicked)
+	opened -> idle(frame.press)
 	opened -> idle(opened.menu.menuItem1Selected, item1Selected)
-
+	opened -> idle(opened.menu.menuItem2Selected, item2Selected)
+	opened -> idle(opened.menu.menuItem3Selected, item3Selected)
+	opened -> idle(opened.menu.close)
 
 	}
+
+	item1Selected -> (this){
+		this.dronefill.r = 0
+		this.dronefill.g = 150
+		this.dronefill.b = 150
+	}
+
+	item2Selected -> (this){
+		this.dronefill.r = 150
+		this.dronefill.g = 0
+		this.dronefill.b = 150
+	}
+	item3Selected -> (this){
+		this.dronefill.r = 150
+		this.dronefill.g = 150
+		this.dronefill.b = 0
+	}
+
 }

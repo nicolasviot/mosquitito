@@ -11,6 +11,7 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 	Spike menuItem1Selected
 	Spike menuItem2Selected
 	Spike menuItem3Selected
+	Spike close
 
 
 	TextAnchor _ (1)
@@ -18,7 +19,7 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 
 
 	FillColor bgitem1 (140, 140, 140)
-	Rectangle menuItem1(0, 0, 100, 300)
+	Rectangle menuItem1(0, 0, 100, 100)
 	FillColor text1(0, 0, 0)
 	Text menu1text(50, 50, label1)
 	
@@ -32,7 +33,8 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 	FillColor text1(0, 0, 0)
 	Text menu3text(50, 250, label3)
 
-
+	FillColor _(255, 0, 0)
+	Rectangle cross(75, -25, 25, 25)
 	FSM menuItem1FSM{
 		State idle{
 			140 =: bgitem1.r
@@ -48,6 +50,7 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 		selected -> idle (menuItem1.left.release, menuItem1Selected)
 		selected -> idle (menuItem2.left.release)
 		selected -> idle (menuItem3.left.release)
+		selected -> idle (cross.press, close)
 	}
 
 	FSM menuItem2FSM{
@@ -65,6 +68,7 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 		selected -> idle (menuItem2.left.release, menuItem2Selected)
 		selected -> idle (menuItem1.left.release)
 		selected -> idle (menuItem3.left.release)
+		selected -> idle (cross.press, close)
 	}
 
 	FSM menuItem3FSM{
@@ -82,6 +86,7 @@ Menu (Process frame, double _x, double _y, string label1, string label2, string 
 		selected -> idle (menuItem3.left.release, menuItem3Selected)
 		selected -> idle (menuItem1.left.release)
 		selected -> idle (menuItem2.left.release)
+		selected -> idle (cross.press, close)
 	}
 
 

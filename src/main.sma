@@ -28,6 +28,7 @@ import Map.widgets.ConstraintBox
 import Map.widgets.FlightPlan
 import Map.widgets.ControlPannel
 import Map.widgets.GridPannel
+import Map.widgets.MapVoliere
 
 _main_
 Component root {
@@ -47,44 +48,153 @@ Component root {
 	//background
 
 	FillColor light_grey (48, 48, 48)
+
 	Rectangle bg_constraint(0, 0, $frame.width * 0.24, $frame.height * 1 )
-	ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, $frame.height * 0.05, "X", "Y", "Z", "Heading")
-	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0)
-	ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.25, "X", "Y", "Z", "Heading")
+
+	Button constraint_widgets_button (frame, "constraint pannel", $frame.width * 0.12, $frame.height * 0.05)
+	Button block_widgets_button (frame, "block pannel", $frame.width * 0.03, $frame.height * 0.05)
+
+
+	constraint_widgets_button.click -> (root){
+		//"constraint_widgets" =: root.leftPannel.state
+		root.leftPannel.state = "constraint_widgets"
+	} 
+	block_widgets_button.click -> (root){
+		//"block_widgets" =: root.leftPannel.state
+		root.leftPannel.state = "block_widgets"
+	}
 	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
-	GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50)
+	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0)
+							
+	Switch leftPannel(constraint_widgets){
+		Component constraint_widgets{
+				Translation _t (0, $frame.height * 0.10)
+				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, 0, "X", "Y", "Z", "Heading")
+				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.20, "X", "Y", "Z", "Heading")
+				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50)
+		
+		}
+
+
+		Component block_widgets {
+
+
+			Translation _t (0, $frame.height * 0.10)
+			
+
+
+			TextAnchor _(1)
+			FillColor rec_bg (120, 120, 120)
+			/*Name + description? blocks*/
+			Rectangle name_bg_1 ($frame.width * 0.02, 0, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle name_bg_2 ($frame.width * 0.09, 0, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle name_bg_3 ($frame.width * 0.16, 0, $frame.width * 0.06, $frame.height * 0.10)
+			
+
+
+
+			/*Blocks*/
+			Rectangle bloc_1_drone_1 ($frame.width * 0.02, $frame.height * 0.12, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_2_drone_1 ($frame.width * 0.02, $frame.height * 0.24, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_3_drone_1 ($frame.width * 0.02, $frame.height * 0.36, $frame.width * 0.06, $frame.height * 0.10)
+
+			Rectangle bloc_1_drone_2 ($frame.width * 0.09, $frame.height * 0.12, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_2_drone_2 ($frame.width * 0.09, $frame.height * 0.24, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_3_drone_2 ($frame.width * 0.09, $frame.height * 0.36, $frame.width * 0.06, $frame.height * 0.10)
+
+			Rectangle bloc_1_drone_3 ($frame.width * 0.16, $frame.height * 0.12, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_2_drone_3 ($frame.width * 0.16, $frame.height * 0.24, $frame.width * 0.06, $frame.height * 0.10)
+			Rectangle bloc_3_drone_3 ($frame.width * 0.16, $frame.height * 0.36, $frame.width * 0.06, $frame.height * 0.10)
+
+
+			FillColor text_fc (64, 64, 64)
+			Text tagDrone1($frame.width * 0.05, $frame.height * 0.05, "Drone 1")
+			Text tagDrone2($frame.width * 0.12, $frame.height * 0.05, "Drone 2")
+			Text tagDrone3($frame.width * 0.19, $frame.height * 0.05, "Drone 3")
+
+			Text tagDrone1_block1($frame.width * 0.05, $frame.height * 0.17, "drone1block1")
+			Text tagDrone2_block1($frame.width * 0.12, $frame.height * 0.17, "drone2block1")
+			Text tagDrone3_block1($frame.width * 0.19, $frame.height * 0.17, "drone3block1")
+
+			Text tagDrone1_block2($frame.width * 0.05, $frame.height * 0.29, "drone1block2")
+			Text tagDrone2_block2($frame.width * 0.12, $frame.height * 0.29, "drone2block2")
+			Text tagDrone3_block2($frame.width * 0.19, $frame.height * 0.29, "drone3block2")
+
+			Text tagDrone1_block3($frame.width * 0.05, $frame.height * 0.41, "drone1block3")
+			Text tagDrone2_block3($frame.width * 0.12, $frame.height * 0.41, "drone2block3")
+			Text tagDrone3_block3($frame.width * 0.19, $frame.height * 0.41, "drone3block3")
+
+		
+			/*ivy bindings*/
+			/*TODO : identify relevant block ID after final flight plan version*/
+
+			bloc_1_drone_1.press -> ctrlPannel.gotoblock1_drone1
+			bloc_2_drone_1.press -> ctrlPannel.gotoblock2_drone1
+			bloc_3_drone_1.press -> ctrlPannel.gotoblock3_drone1
+
+			bloc_1_drone_2.press -> ctrlPannel.gotoblock1_drone2
+			bloc_2_drone_2.press -> ctrlPannel.gotoblock2_drone2
+			bloc_3_drone_2.press -> ctrlPannel.gotoblock3_drone2
+
+			bloc_1_drone_3.press -> ctrlPannel.gotoblock1_drone3
+			bloc_2_drone_3.press -> ctrlPannel.gotoblock2_drone3
+			bloc_3_drone_3.press -> ctrlPannel.gotoblock3_drone3
+
+
+			/*TODO : drag & drop area from block*/
+			/*FSM place_area{
+				State idle 
+				State dragging{
+					AreaRep arearep (...)
+
+				}
+				idle -> dragging(block.press)
+				dragging-> idle (frame.release, generateAreaRep)
+			}
+*/
+
+
+
+		}
+	}
+
+
+	//MapVoliere mapvoliere(frame, 50, 900, 200, 200)
 	
+
+
 	testPannel.leaderFixeReleased -> ctrlPannel.abortMission
-	60 =: cstr.xProp
-	-60 =: cstr.yProp
-	-60 =: cstr2.xProp 
-	-60 =: cstr2.yProp
-	// cstr.xProp =:> testPannel.link1.dx
-	// cstr.yProp =:> testPannel.link1.dy
-	// cstr.headingProp =:> testPannel.link1.drot
-	// cstr2.xProp =:> testPannel.link2.dx
-	// cstr2.yProp =:> testPannel.link2.dy
-	// cstr2.headingProp =:> testPannel.link2.drot
-	cstr.xProp => ctrlPannel.Xf1
-	cstr.yProp => ctrlPannel.Yf1
-	cstr2.xProp => ctrlPannel.Xf2
-	cstr2.yProp	=> ctrlPannel.Yf2
-	cstr.onSpike -> ctrlPannel.formationON1
-	cstr.offSpike -> ctrlPannel.formationOFF1
-	cstr2.onSpike -> ctrlPannel.formationON2
-	cstr2.offSpike -> ctrlPannel.formationOFF2
+	60 =: leftPannel.constraint_widgets.cstr.xProp
+	-60 =: leftPannel.constraint_widgets.cstr.yProp
+	-60 =: leftPannel.constraint_widgets.cstr2.xProp 
+	-60 =: leftPannel.constraint_widgets.cstr2.yProp
+	// leftPannel.constraint_widgets.cstr.xProp =:> testPannel.link1.dx
+	// leftPannel.constraint_widgets.cstr.yProp =:> testPannel.link1.dy
+	// leftPannel.constraint_widgets.cstr.headingProp =:> testPannel.link1.drot
+	// leftPannel.constraint_widgets.cstr2.xProp =:> testPannel.link2.dx
+	// leftPannel.constraint_widgets.cstr2.yProp =:> testPannel.link2.dy
+	// leftPannel.constraint_widgets.cstr2.headingProp =:> testPannel.link2.drot
+	leftPannel.constraint_widgets.cstr.xProp => ctrlPannel.Xf1
+	leftPannel.constraint_widgets.cstr.yProp => ctrlPannel.Yf1
+	leftPannel.constraint_widgets.cstr2.xProp => ctrlPannel.Xf2
+	leftPannel.constraint_widgets.cstr2.yProp	=> ctrlPannel.Yf2
+	//leftPannel.constraint_widgets.cstr.onSpike -> ctrlPannel.formationON1
+	//leftPannel.constraint_widgets.cstr.onSpike -> mapvoliere.addDrone
+	leftPannel.constraint_widgets.cstr.offSpike -> ctrlPannel.formationOFF1
+	leftPannel.constraint_widgets.cstr2.onSpike -> ctrlPannel.formationON2
+	leftPannel.constraint_widgets.cstr2.offSpike -> ctrlPannel.formationOFF2
 
 	LogPrinter log("debug : ")
 	FSM pseudoBidirectionnal {
 		State idle{
 
-			cstr.xProp =:> gridPannel.link1.dx
-			cstr.yProp =:> .gridPannel.link1.dy
-			cstr.headingProp =:> gridPannel.link1.drot
+			leftPannel.constraint_widgets.cstr.xProp =:> leftPannel.constraint_widgets.gridPannel.link1.dx
+			leftPannel.constraint_widgets.cstr.yProp =:> leftPannel.constraint_widgets.gridPannel.link1.dy
+			leftPannel.constraint_widgets.cstr.headingProp =:> leftPannel.constraint_widgets.gridPannel.link1.drot
 
-			cstr2.xProp =:> gridPannel.link2.dx
-			cstr2.yProp =:> gridPannel.link2.dy
-			cstr2.headingProp =:> gridPannel.link2.drot
+			leftPannel.constraint_widgets.cstr2.xProp =:> leftPannel.constraint_widgets.gridPannel.link2.dx
+			leftPannel.constraint_widgets.cstr2.yProp =:> leftPannel.constraint_widgets.gridPannel.link2.dy
+			leftPannel.constraint_widgets.cstr2.headingProp =:> leftPannel.constraint_widgets.gridPannel.link2.drot
 
 
 		}
@@ -93,32 +203,22 @@ Component root {
 
 			"entering grid to cstr" =: log.input
 
-			gridPannel.link1.dx =:> cstr.xProp
-			gridPannel.link1.dy =:> cstr.yProp
+			leftPannel.constraint_widgets.gridPannel.link1.dx =:> leftPannel.constraint_widgets.cstr.xProp
+			leftPannel.constraint_widgets.gridPannel.link1.dy =:> leftPannel.constraint_widgets.cstr.yProp
 
-			gridPannel.link2.dx	=:> cstr2.xProp  
-			gridPannel.link2.dy =:> cstr2.yProp
+			leftPannel.constraint_widgets.gridPannel.link2.dx	=:> leftPannel.constraint_widgets.cstr2.xProp  
+			leftPannel.constraint_widgets.gridPannel.link2.dy =:> leftPannel.constraint_widgets.cstr2.yProp
 			
  
 
 
 		}
 
-		idle -> notidle (gridPannel.bg.move)
-		notidle -> idle (cstr.background.bg.move)
-		notidle -> idle (cstr2.background.bg.move)
+		idle -> notidle (leftPannel.constraint_widgets.gridPannel.bg.move)
+		notidle -> idle (leftPannel.constraint_widgets.cstr.background.bg.move)
+		notidle -> idle (leftPannel.constraint_widgets.cstr2.background.bg.move)
 
 	}
-
-	// bi directional binding ? move fsm
-	
-	// testPannel.gridPannel.link1.dx =:> cstr.xProp
-	// testPannel.gridPannel.link1.dy =:> cstr.yProp
-
-	// testPannel.gridPannel.link2.dx =:> cstr2.xProp
-	// testPannel.gridPannel.link2.dy =:> cstr2.yProp
-	
-	//FlightPlan fpl(frame, "Leader Flight Plan", 0, $frame.height * 0.30, $frame.width * 0.24, $frame.height * 0.70)
 
 }
 

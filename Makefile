@@ -31,6 +31,8 @@ srcs_sma :=	src/Slider.sma \
 			src/Map/widgets/GridPannel.sma\
 			src/cookbook/MarkerAdd.sma \
 			src/Map/Map.sma \
+			src/Map/widgets/PanAndZoomWidget.sma \
+			src/Map/widgets/MapVoliere.sma \
 			src/testPannel/TestPannel.sma \
 			src/Map/widgets/ControlPannel.sma \
 			src/main.sma

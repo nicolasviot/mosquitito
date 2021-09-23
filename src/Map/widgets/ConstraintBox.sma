@@ -22,11 +22,7 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   background.constraintname.text = $label
 
   //consume mouseevents
-  LogPrinter loger("")
-  background.bg.right.press -> noSpike
-  noSpike -> (this){
-    this.loger.input = "pressed"
-  }
+
   /*------ set properties -------*/
   
   Double xProp(564)
