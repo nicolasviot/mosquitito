@@ -54,7 +54,6 @@ Component root {
 	Button constraint_widgets_button (frame, "constraint pannel", $frame.width * 0.12, $frame.height * 0.05)
 	Button block_widgets_button (frame, "block pannel", $frame.width * 0.03, $frame.height * 0.05)
 
-
 	constraint_widgets_button.click -> (root){
 		//"constraint_widgets" =: root.leftPannel.state
 		root.leftPannel.state = "constraint_widgets"
@@ -72,6 +71,7 @@ Component root {
 				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, 0, "X", "Y", "Z", "Heading")
 				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.20, "X", "Y", "Z", "Heading")
 				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50)
+				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.40)
 		
 		}
 
@@ -183,6 +183,17 @@ Component root {
 	leftPannel.constraint_widgets.cstr.offSpike -> ctrlPannel.formationOFF1
 	leftPannel.constraint_widgets.cstr2.onSpike -> ctrlPannel.formationON2
 	leftPannel.constraint_widgets.cstr2.offSpike -> ctrlPannel.formationOFF2
+	
+
+	//switch formation mode from 0 (global) to 1 (local)
+	leftPannel.constraint_widgets.switch_button.click ->{
+	ctrlPannel.modeL?"global mode":"local mode" =: leftPannel.constraint_widgets.switch_button.thisLabel.text
+
+	ctrlPannel.modeL?0:1 =: ctrlPannel.modeL
+ 	ctrlPannel.modeF1?0:1 =: ctrlPannel.modeF1
+	ctrlPannel.modeF2?0:1 =: ctrlPannel.modeF2
+
+	}
 
 	LogPrinter log("debug : ")
 	FSM pseudoBidirectionnal {

@@ -105,7 +105,7 @@ TestPannel(Process frame, Process map, double _x, double _y, double _width, doub
 			Rectangle encapsulatedTarget (0, 0, 200, 200)
 		}
 	}
-
+	//TARGET
 	Rectangle target(_x + 800, _y - 200, 200, 200)
 	Spike leaderFixeReleased
 	

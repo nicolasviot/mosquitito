@@ -17,17 +17,6 @@ GridPannel(Process frame, double _x, double _y){
 	svggrid = loadFromXML ("./ressources/gridV2.svg")
 	g << svggrid
 
-
-	/*
-		cercle concentriaue à générer
-
-	*/
-
-
-	/*
-		insert interface for 2 drones
-
-	*/
 	Double width(76)
 	Double height(68)
 	
@@ -49,25 +38,6 @@ GridPannel(Process frame, double _x, double _y){
 
 	Link link1(frame, droneLeader, droneFollower1)
     Link link2(frame, droneLeader, droneFollower2)
-	
-	// FSM dragLeader{
-	// 	State idle
-	// 	State drag{
-
-	// 		// // Modulo modx (0, 1)
-	// 		// this.bg.move.x - _t.tx - droneLeader.width / 2 =:> modx.left
-	// 		// // Modulo mody (0, 1)
-	// 		// this.bg.move.y - _t.ty - droneLeader.height / 2 =:> mody.left
-
-	// 		// this.bg.move.x - _t.tx - droneLeader.width / 2 - modx.result =:> droneLeader.x
-	// 		// this.bg.move.y - _t.ty - droneLeader.height /2 - mody.result =:> droneLeader.y
-	// 		frame.move.x - _t.tx - droneLeader.width / 2 =:> droneLeader.x
-	// 		frame.move.y - _t.ty - droneLeader.height /2  =:> droneLeader.y
-	// 	}
-
-	// 	idle -> drag (droneLeader.bg.left.press)
-	// 	drag -> idle (droneLeader.bg.left.release)
-	// }
 
 	Double maxXbound(150)
 	Double maxYbound(150)
@@ -92,7 +62,7 @@ GridPannel(Process frame, double _x, double _y){
 			// this.bg.move.y - _t.ty - droneFollower1.height /2 - mody.result - droneLeader.y =:> this.link1.dy
 			
 			frame.move.x - _t.tx - droneFollower1.width / 2 -  droneLeader.x =:> buffX
-			frame.move.y - _t.ty - droneFollower1.height /2 -  droneLeader.y =:> buffY
+			frame.move.y - _t.ty - droneFollower1.height * 2 - droneLeader.y =:> buffY
 
 			(buffX>maxXbound)?maxXbound:(buffX<minXbound?minXbound:buffX) =:> this.link1.dx
 			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link1.dy
@@ -116,7 +86,7 @@ GridPannel(Process frame, double _x, double _y){
 			// frame.move.y - _t.ty - droneFollower2.height /2 - mody.result - droneLeader.y =:> this.link2.dy
 
 			frame.move.x - _t.tx - droneFollower2.width / 2 -  droneLeader.x =:> buffX
-			frame.move.y - _t.ty - droneFollower2.height /2 -  droneLeader.y =:> buffY
+			frame.move.y - _t.ty - droneFollower2.height * 2-  droneLeader.y =:> buffY
 
 			(buffX>maxXbound)?maxXbound:(buffX<minXbound?minXbound:buffX) =:> this.link2.dx
 			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link2.dy
@@ -142,27 +112,39 @@ GridPannel(Process frame, double _x, double _y){
 
 	}
 	
-	
 
-
-	/* interface */
-/*
-	xL aka droneLeader.x
-	yL aka droneLeader.y
-	rotL aka droneLeader.drot
-
-	xF1 aka droneFollower1.x
-	yF1 aka droneFollower1.y
-	rotF1 aka droneFollower1.drot
-
-	xF2 aka droneFollower2.x
-	yF2 aka droneFollower2.y
-	rotF2 aka droneFollower2.drot
-
-
-*/	
 
 	Text legend(0, 300 * 0.95, "scale :1 unit = 1m")
+
+
+
+
+    IvyAccess ivybusgrid ("127.255.255.255:2010", "smalagridpannel", "READY")
+    {
+ //        // define your regexs 
+ //        // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
+ //        //FLIGHT_PARAM (ID 11)
+        
+        String regexGetLatLonL ("ground FLIGHT_PARAM 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberL ("21 NAVIGATION (.*)")
+        String regexGetLatLonF1 ("ground FLIGHT_PARAM 22 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberF1 ("22 NAVIGATION (.*)")
+        String regexGetLatLonF2 ("ground FLIGHT_PARAM 23 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String regexGetBlockNumberF2 ("23 NAVIGATION (.*)")
+    	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")
+       
+
+
+        }
+
+
+
+ //    //creating a connector to display incomming messages in the text
+    ivybusgrid.in.regexGetLatLonL.[3] => droneLeader.rot
+
+    ivybusgrid.in.regexGetLatLonF1.[3] => droneFollower1.rot
+
+    ivybusgrid.in.regexGetLatLonF2.[3] => droneFollower2.rot
 
 
 }
