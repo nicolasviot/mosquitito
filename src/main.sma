@@ -29,6 +29,7 @@ import Map.widgets.FlightPlan
 import Map.widgets.ControlPannel
 import Map.widgets.GridPannel
 import Map.widgets.MapVoliere
+import Map.Communications.IvyComms
 
 _main_
 Component root {
@@ -43,6 +44,8 @@ Component root {
 	 Map map(frame,"FR", 16, 43.462239, 1.272804, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 1) 
 	 frame.width * 0.25 => map.t.tx
 	 MapController mapController (map)
+	 IvyComms bus("Mosquitito")
+
 	//MarkerAdd markerAdd (map)
 
 	//background
@@ -62,15 +65,15 @@ Component root {
 		//"block_widgets" =: root.leftPannel.state
 		root.leftPannel.state = "block_widgets"
 	}
-	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25)
-	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0)
+	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
+	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0, bus.bus)
 							
 	Switch leftPannel(constraint_widgets){
 		Component constraint_widgets{
 				Translation _t (0, $frame.height * 0.10)
 				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, 0, "X", "Y", "Z", "Heading")
 				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.20, "X", "Y", "Z", "Heading")
-				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50)
+				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50, bus.bus)
 				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.40)
 		
 		}

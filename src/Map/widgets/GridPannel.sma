@@ -8,7 +8,7 @@ import Map.widgets.Drone
 import Map.widgets.Link
 
 _define_
-GridPannel(Process frame, double _x, double _y){
+GridPannel(Process frame, double _x, double _y, Process ivybusgrid){
 
 	Translation _t($_x, $_y)
 	
@@ -118,28 +118,7 @@ GridPannel(Process frame, double _x, double _y){
 
 
 
-
-    IvyAccess ivybusgrid ("127.255.255.255:2010", "smalagridpannel", "READY")
-    {
- //        // define your regexs 
- //        // better to use (\\S*) than (.*) eq: "pos=(\\S*) alt=(\\S*)"
- //        //FLIGHT_PARAM (ID 11)
-        
-        String regexGetLatLonL ("ground FLIGHT_PARAM 21 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-        String regexGetBlockNumberL ("21 NAVIGATION (.*)")
-        String regexGetLatLonF1 ("ground FLIGHT_PARAM 22 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-        String regexGetBlockNumberF1 ("22 NAVIGATION (.*)")
-        String regexGetLatLonF2 ("ground FLIGHT_PARAM 23 (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-        String regexGetBlockNumberF2 ("23 NAVIGATION (.*)")
-    	String regexGetBlockJump("gcs JUMP_TO_BLOCK (\\S*) (\\S*)")
-       
-
-
-        }
-
-
-
- //    //creating a connector to display incomming messages in the text
+    //creating a connector to display incomming messages in the text
     ivybusgrid.in.regexGetLatLonL.[3] => droneLeader.rot
 
     ivybusgrid.in.regexGetLatLonF1.[3] => droneFollower1.rot

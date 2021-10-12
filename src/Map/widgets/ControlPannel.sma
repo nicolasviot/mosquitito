@@ -8,7 +8,7 @@ import Map.widgets.ConstraintBox
 
 
 _define_
-ControlPannel(Process frame, double _x, double _y, double _width, double _height)
+ControlPannel(Process frame, double _x, double _y, double _width, double _height, Process controlPannelBus)
 {
 
 	/* Constants */
@@ -45,7 +45,7 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	modeF1 => modeF1_df.input
 	modeF2 => modeF2_df.input
 
-	 IvyAccess controlPannelBus("127.255.255.255:2010", "smala ControlPannel", "READY")
+	//IvyAccess controlPannelBus("127.255.255.255:2010", "smala ControlPannel", "READY")
 
 	"21 FORMATION_SLOT_TM 21 " + toString(modeL_df.output) + " " + toString(Xl) + " " + toString(Yl) + " 0" => controlPannelBus.out
 	"22 FORMATION_SLOT_TM 22 " + toString(modeF1_df.output) + " " + toString(Xf1) + " " + toString(Yf1) + " 0"=> controlPannelBus.out
