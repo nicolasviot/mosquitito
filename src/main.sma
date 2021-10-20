@@ -30,6 +30,7 @@ import Map.widgets.ControlPannel
 import Map.widgets.GridPannel
 import Map.widgets.MapVoliere
 import Map.Communications.IvyComms
+import Map.widgets.DronePatatoidal
 
 _main_
 Component root {
@@ -53,7 +54,6 @@ Component root {
 	FillColor light_grey (48, 48, 48)
 
 	Rectangle bg_constraint(0, 0, $frame.width * 0.24, $frame.height * 1 )
-
 	Button constraint_widgets_button (frame, "constraint pannel", $frame.width * 0.12, $frame.height * 0.05)
 	Button block_widgets_button (frame, "block pannel", $frame.width * 0.03, $frame.height * 0.05)
 

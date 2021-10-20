@@ -6,6 +6,7 @@ use comms
 
 import Map.widgets.Drone
 import Map.widgets.Link
+import Map.widgets.DronePatatoidal
 
 _define_
 GridPannel(Process frame, double _x, double _y, Process ivybusgrid){
@@ -36,7 +37,9 @@ GridPannel(Process frame, double _x, double _y, Process ivybusgrid){
 	0 =: droneFollower2.dronefill.g
 	198 =: droneFollower2.dronefill.b
 
-	Link link1(frame, droneLeader, droneFollower1)
+	DronePatatoidal dronetest (frame, 190 - $width/2, 140 - $height/2, 0, $_t.tx, $_t.ty)
+	
+	Link link1(frame, droneLeader, dronetest)
     Link link2(frame, droneLeader, droneFollower2)
 
 	Double maxXbound(150)
@@ -45,6 +48,35 @@ GridPannel(Process frame, double _x, double _y, Process ivybusgrid){
 	Double minYbound(-150)
 	Double buffX(0)
 	Double buffY(0)
+	FSM dragpatatoidal{
+		State idle{
+			//frame.move =:> pos0
+
+
+		}
+		State drag{
+
+			// Modulo modx (0, 20)
+			// frame.move.x - _t.tx - droneFollower1.width / 2 =:> modx.left
+			// Modulo mody (0, 20)
+			// frame.move.y - _t.ty - droneFollower1.height / 2 =:> mody.left
+
+			// this.bg.move.x - _t.tx - droneFollower1.width / 2 - modx.result - droneLeader.x =:> this.link1.dx
+			// this.bg.move.y - _t.ty - droneFollower1.height /2 - mody.result - droneLeader.y =:> this.link1.dy
+			
+			frame.move.x - _t.tx - dronetest.width / 2 -  dronetest.x =:> buffX
+			frame.move.y - _t.ty - dronetest.height * 2 - dronetest.y =:> buffY
+
+			(buffX>maxXbound)?maxXbound:(buffX<minXbound?minXbound:buffX) =:> this.link1.dx
+			(buffY>maxYbound)?maxYbound:(buffY<minYbound?minYbound:buffY) =:> this.link1.dy
+			//diff frame pos0
+		}
+
+		idle -> drag (dronetest.grand_patatoide.left.press)
+		drag -> idle (dronetest.grand_patatoide.left.release)
+
+	}
+	/*
 	FSM dragFollower1{
 		State idle{
 			//frame.move =:> pos0
@@ -72,6 +104,7 @@ GridPannel(Process frame, double _x, double _y, Process ivybusgrid){
 		idle -> drag (droneFollower1.bg.left.press)
 		drag -> idle (droneFollower1.bg.left.release)
 	}
+	*/
 
 	FSM dragFollower2{
 		State idle
