@@ -70,11 +70,11 @@ Component root {
 							
 	Switch leftPannel(constraint_widgets){
 		Component constraint_widgets{
-				Translation _t (0, $frame.height * 0.10)
-				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, 0, "X", "Y", "Z", "Heading")
-				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.20, "X", "Y", "Z", "Heading")
-				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50, bus.bus)
-				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.40)
+				//Translation _t (0, $frame.height * 0.10)
+				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, $frame.height * 0.10, "X", "Y", "Z", "Heading")
+				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.30, "X", "Y", "Z", "Heading")
+				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.60, bus.bus)
+				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.50)
 		
 		}
 

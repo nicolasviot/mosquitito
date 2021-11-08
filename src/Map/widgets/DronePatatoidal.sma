@@ -21,18 +21,25 @@ DronePatatoidal(Process frame, double _x, double _y, double _rotation, double _p
 	y aka _t.ty
 
 	x + width * 0.5 =:> cx
-	y + height * 0.5=:> cy
-
+	y + height * 0.5 =:> cy
+    Rectangle bg(0, 0, 92, 78)
     
     FillColor grand_patatoide_color (0, 200, 0)
-    Circle grand_patatoide ($cx, $cy, $width * 0.25)
+    Circle grand_patatoide ($width * 0.5, $height * 0.5, $width * 0.25)
 
     OutlineColor pin_color (0, 0, 200)
     Line pin ($cx, $cy, $cx, $cy)
 
     FillColor petit_patatoide_color (200, 0, 0)
-    Circle petit_patatoide ($cx, $cy, $width * 0.125)
+    Circle petit_patatoide ($width * 0.5, $height * 0.5, $width * 0.125)
 
+
+
+
+    petit_patatoide.cx =:> pin.x1
+    petit_patatoide.cy =:> pin.y1
+    grand_patatoide.cx =:> pin.x2
+    grand_patatoide.cy =:> pin.y2
 
     Rotation _r(_rotation, 0, 0)
     rot aka _r.a 
@@ -40,12 +47,7 @@ DronePatatoidal(Process frame, double _x, double _y, double _rotation, double _p
     height * 0.5 =:> _r.cy
 
     FillColor drone_orientation_color(0, 0, 0)
-    Circle drone_orientation ($cx, $cy - $width * 0.140, $width * 0.065)
-
-    petit_patatoide.cx =:> pin.x1
-    petit_patatoide.cy =:> pin.y1
-    grand_patatoide.cx =:> pin.x2
-    grand_patatoide.cy =:> pin.y2
+    Circle drone_orientation ($width * 0.5, $height * 0.5 - $height * 0.140, $width * 0.065)
 
 
     FSM ALT_FSM{
@@ -53,7 +55,7 @@ DronePatatoidal(Process frame, double _x, double _y, double _rotation, double _p
 
 
     	State pressed{
-    		petit_patatoide.move.y - 2 * y - _parent_y =:> petit_patatoide.cy
+    		petit_patatoide.move.y - y - _parent_y=:> petit_patatoide.cy
     	}
 
     	idle -> pressed (petit_patatoide.press)
