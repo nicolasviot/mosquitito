@@ -4,7 +4,6 @@ use comms
 use display
 use base
 
-import Map.widgets.PanAndZoomWidget
 import Map.widgets.Drone
 
 
@@ -16,7 +15,7 @@ Spike addDrone
 Double argX (50)
 Double argY (50)
 Double argRot (0)
-FillColor fc(164, 164, 164)
+FillColor fc(35, 240, 240 )
 Rectangle background(0, 0, _width, _height)
 
 /*TODO lambda à débugger*/
@@ -28,10 +27,6 @@ addDrone -> (this) {
 		}
 	}
 
-
-
-Homography smth()
-PanAndZoomWidget panAndZoom(frame, background, smth)
 
 
 }

@@ -3,8 +3,6 @@ use core
 use base
 use display
 use gui
-import Map.utils.conversion.Gps2Screen
-import Map.utils.conversion.Screen2Gps
 
 _define_
 Link(Process frame, Process firstdrone, Process seconddrone){
@@ -47,12 +45,6 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	firstdrone.cy =:> link_gc.visible.path.origin.y
 	seconddrone.cx =:> link_gc.visible.path.destination.x
 	seconddrone.cy =:> link_gc.visible.path.destination.y
-	// intermediaryX =:> path.destination.x1
-	// intermediaryY =:> path.destination.y1
 
-	// Path whatapathlooklike{
-	// 	PathMove ori (1500, 500)
-	// 	PathQuadratic dest (1400, 650, 1500, 800)
-	// }
 
 }

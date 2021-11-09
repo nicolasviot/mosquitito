@@ -18,12 +18,7 @@ use display
 use gui
 use comms
 
-import Map.Map
-import Map.widgets.MapController
-import testPannel.TestPannel
-import Map.models.object.MobileObject
 import Map.widgets.Button
-import cookbook.MarkerAdd
 import Map.widgets.ConstraintBox
 import Map.widgets.FlightPlan
 import Map.widgets.ControlPannel
@@ -31,6 +26,7 @@ import Map.widgets.GridPannel
 import Map.widgets.MapVoliere
 import Map.Communications.IvyComms
 import Map.widgets.DronePatatoidal
+import testPannel.TestPannel
 
 _main_
 Component root {
@@ -39,17 +35,9 @@ Component root {
 	mouseTracking =1
 	Exit ex (0,1)
 	frame.close->ex	
-	//Simple map component (upper right)
+	IvyComms bus("Mosquitito")
+	_DEBUG_GRAPH_CYCLE_DETECT = 1
 
-
-	 Map map(frame,"FR", 16, 43.462239, 1.272804, 0, $frame.width * 0.25, 0, $frame.width * 0.75, $frame.height * 1) 
-	 frame.width * 0.25 => map.t.tx
-	 MapController mapController (map)
-	 IvyComms bus("Mosquitito")
-
-	//MarkerAdd markerAdd (map)
-
-	//background
 
 	FillColor light_grey (48, 48, 48)
 
@@ -65,16 +53,16 @@ Component root {
 		//"block_widgets" =: root.leftPannel.state
 		root.leftPannel.state = "block_widgets"
 	}
-	TestPannel testPannel(frame, map, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
+	TestPannel testPannel(frame, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0, bus.bus)
 							
 	Switch leftPannel(constraint_widgets){
 		Component constraint_widgets{
-				Translation _t (0, $frame.height * 0.10)
-				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, 0, "X", "Y", "Z", "Heading")
-				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.20, "X", "Y", "Z", "Heading")
-				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.50, bus.bus)
-				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.40)
+				//Translation _t (0, $frame.height * 0.10)
+				ConstraintBox cstr(frame, "Contrainte 1", $frame.width * 0.015, $frame.height * 0.10, "X", "Y", "Z", "Heading")
+				ConstraintBox cstr2(frame, "Contrainte 2", $frame.width * 0.015,  $frame.height * 0.30, "X", "Y", "Z", "Heading")
+				GridPannel gridPannel(frame, $frame.width * 0.015, $frame.height * 0.60, bus.bus)
+				Button switch_button (frame, "global mode", $frame.width * 0.100, $frame.height * 0.50)
 		
 		}
 
@@ -166,22 +154,15 @@ Component root {
 	
 
 
-	testPannel.leaderFixeReleased -> ctrlPannel.abortMission
 	60 =: leftPannel.constraint_widgets.cstr.xProp
 	-60 =: leftPannel.constraint_widgets.cstr.yProp
 	-60 =: leftPannel.constraint_widgets.cstr2.xProp 
 	-60 =: leftPannel.constraint_widgets.cstr2.yProp
-	// leftPannel.constraint_widgets.cstr.xProp =:> testPannel.link1.dx
-	// leftPannel.constraint_widgets.cstr.yProp =:> testPannel.link1.dy
-	// leftPannel.constraint_widgets.cstr.headingProp =:> testPannel.link1.drot
-	// leftPannel.constraint_widgets.cstr2.xProp =:> testPannel.link2.dx
-	// leftPannel.constraint_widgets.cstr2.yProp =:> testPannel.link2.dy
-	// leftPannel.constraint_widgets.cstr2.headingProp =:> testPannel.link2.drot
 	leftPannel.constraint_widgets.cstr.xProp => ctrlPannel.Xf1
 	leftPannel.constraint_widgets.cstr.yProp => ctrlPannel.Yf1
 	leftPannel.constraint_widgets.cstr2.xProp => ctrlPannel.Xf2
 	leftPannel.constraint_widgets.cstr2.yProp	=> ctrlPannel.Yf2
-	//leftPannel.constraint_widgets.cstr.onSpike -> ctrlPannel.formationON1
+	leftPannel.constraint_widgets.cstr.onSpike -> ctrlPannel.formationON1
 	//leftPannel.constraint_widgets.cstr.onSpike -> mapvoliere.addDrone
 	leftPannel.constraint_widgets.cstr.offSpike -> ctrlPannel.formationOFF1
 	leftPannel.constraint_widgets.cstr2.onSpike -> ctrlPannel.formationON2
