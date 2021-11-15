@@ -27,6 +27,7 @@ import Map.widgets.MapVoliere
 import Map.Communications.IvyComms
 import Map.widgets.DronePatatoidal
 import testPannel.TestPannel
+import map_mathieu.Map
 
 _main_
 Component root {
@@ -56,6 +57,14 @@ Component root {
 	TestPannel testPannel(frame, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0, bus.bus)
 							
+	/***************************************/
+	/***********   Carte   *****************/ 
+	/***************************************/
+	
+
+	Map map (frame, $frame.width * 0.24, 0, 1000, 1000, 43.4818, 0, 8)
+  	frame.{width,height} =:> map.{width,height}
+
 	Switch leftPannel(constraint_widgets){
 		Component constraint_widgets{
 				//Translation _t (0, $frame.height * 0.10)
@@ -201,7 +210,7 @@ Component root {
 			leftPannel.constraint_widgets.gridPannel.link1.dx =:> leftPannel.constraint_widgets.cstr.xProp
 			leftPannel.constraint_widgets.gridPannel.link1.dy =:> leftPannel.constraint_widgets.cstr.yProp
 
-			leftPannel.constraint_widgets.gridPannel.link2.dx	=:> leftPannel.constraint_widgets.cstr2.xProp  
+			leftPannel.constraint_widgets.gridPannel.link2.dx =:> leftPannel.constraint_widgets.cstr2.xProp  
 			leftPannel.constraint_widgets.gridPannel.link2.dy =:> leftPannel.constraint_widgets.cstr2.yProp
 			
  

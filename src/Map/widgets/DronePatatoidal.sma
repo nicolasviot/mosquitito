@@ -14,7 +14,9 @@ DronePatatoidal(Process frame, double _x, double _y, double _rotation, double _p
 	Double height(78)
 	Double cx (0)
 	Double cy (0)
-	
+    Int req_x(0)
+    Int req_y(0)
+    Double r ($width)	
 
 	
 	x aka _t.tx
@@ -22,6 +24,8 @@ DronePatatoidal(Process frame, double _x, double _y, double _rotation, double _p
 
 	x + width * 0.5 =:> cx
 	y + height * 0.5 =:> cy
+    req_x + width * 0.5 =:> cx
+    req_y + height * 0.5 =:> cy
     Rectangle bg(0, 0, 92, 78)
     
     FillColor grand_patatoide_color (0, 0, 0)

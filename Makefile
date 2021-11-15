@@ -19,20 +19,22 @@ exe_dir := .
 # cpp example
 exe := map
 
-srcs_sma :=	src/Slider.sma \
+srcs_sma :=	src/map_mathieu/Tile.sma src/map_mathieu/Map.sma\
+			src/Slider.sma \
 			src/Map/widgets/Menu.sma \
 			src/Map/widgets/DronePatatoidal.sma \
 			src/Map/Communications/IvyComms.sma \
 			src/Map/widgets/Button.sma src/Map/widgets/Drone.sma src/Map/widgets/Block.sma src/Map/widgets/FlightPlan.sma src/Map/widgets/ConstraintBox.sma \
 			src/Map/widgets/Link.sma \
+			src/Map/widgets/CollisionFilter.sma \
 			src/Map/widgets/GridPannel.sma\
 			src/Map/widgets/MapVoliere.sma \
 			src/testPannel/TestPannel.sma \
 			src/Map/widgets/ControlPannel.sma \
 			src/main.sma
 # srcs_sma := $(shell find $(src_dir) -name "*.sma")
-# srcs_other :=
-srcs_other := $(shell find $(src_dir) -name "*.cpp")
+srcs_other := src/map_mathieu/cpp/coords-utils.cpp src/map_mathieu/cpp/tiles_manager.cpp
+#srcs_other := $(shell find $(src_dir) -name "*.cpp")
 
 
 

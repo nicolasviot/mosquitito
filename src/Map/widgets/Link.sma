@@ -20,8 +20,8 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 	Double drot(0)
 	Double headingset(0)
 
-	firstdrone.x + dx =:> seconddrone.x
-	firstdrone.y + dy =:> seconddrone.y
+	firstdrone.x + dx =:> seconddrone.req_x
+	firstdrone.y + dy =:> seconddrone.req_y
 	headingset? firstdrone.rot + drot : seconddrone.rot =:> seconddrone.rot
 
 
