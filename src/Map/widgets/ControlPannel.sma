@@ -29,6 +29,47 @@ ControlPannel(Process frame, double _x, double _y, double _width, double _height
 	String start_formation("ground JUMP_TO_BLOCK 21 8")
 	String stop_formation("ground JUMP_TO_BLOCK 21 10")
 
+
+	/*
+# In :
+# FP_REQ fp_path / sends all fp_info, waypoints, sectors, exceptions, blocks - one message for each
+# FP_INFO_REQ fp_path / sends fp_info - one message
+# FP_WPS_REQ / sends all waypoints - one message for each
+# FP_SECTORS_REQ / sends all sectors - one message for each
+# FP_EXCEPTIONS_REQ / sends all expcetions - one message for each
+# FP_BLOCKS_REQ / sends all blocks - one message for each
+
+	*/
+	String PATH_LEADER("file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String PATH_LEADER("file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String PATH_LEADER("file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+
+	String FP_REQ_LEADER("FP_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String FP_REQ_F1("FP_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_REQ_F2("FP_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+
+	String FP_INFO_REQ_LEADER("FP_INFO_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml") 
+	String FP_INFO_REQ_F1("FP_INFO_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_INFO_REQ_F2("FP_INFO_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+
+	String FP_WPS_REQ_LEADER("FP_WPS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String FP_WPS_REQ_F1("FP_WPS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_WPS_REQ_F2("FP_WPS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+	
+	String FP_SECTORS_REQ_LEADER("FP_SECTORS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String FP_SECTORS_REQ_F1("FP_SECTORS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_SECTORS_REQ_F2("FP_SECTORS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+
+	String FP_EXCEPTIONS_REQ_LEADER("FP_EXCEPTIONS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String FP_EXCEPTIONS_REQ_F1("FP_SECTORS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_EXCEPTIONS_REQ_F2("FP_SECTORS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+
+	String FP_BLOCKS_REQ_LEADER("FP_BLOCKS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml")
+	String FP_BLOCKS_REQ_F1("FP_BLOCKS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_1/flight_plan.xml")
+	String FP_BLOCKS_REQ_F2("FP_BLOCKS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_follower_2/flight_plan.xml")
+
+
+
 	Double Xl(0)
 	Double Yl(0)
 	Double Xf1(0)

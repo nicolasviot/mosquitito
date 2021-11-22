@@ -46,6 +46,11 @@ Component root {
 	Button constraint_widgets_button (frame, "constraint pannel", $frame.width * 0.12, $frame.height * 0.05)
 	Button block_widgets_button (frame, "block pannel", $frame.width * 0.03, $frame.height * 0.05)
 
+	Button test_info(frame,"test_info_ivy", $frame.width * 0.12, $frame.height * 0.025)
+	Button test_blocks(frame, "test_blocks_ivy", $frame.width * 0.03, $frame.height * 0.025)
+
+
+
 	constraint_widgets_button.click -> (root){
 		//"constraint_widgets" =: root.leftPannel.state
 		root.leftPannel.state = "constraint_widgets"
@@ -56,14 +61,17 @@ Component root {
 	}
 	TestPannel testPannel(frame, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0, bus.bus)
+	ctrlPannel.FP_REQ_LEADER =: bus.bus.out
 							
 	/***************************************/
 	/***********   Carte   *****************/ 
 	/***************************************/
 	
 
-	Map map (frame, $frame.width * 0.24, 0, 1000, 1000, 43.4818, 0, 8)
+	Map map (frame, $frame.width * 0.24, 0, 1000, 800, 43.4818, 0, 8)
   	frame.{width,height} =:> map.{width,height}
+
+
 
 	Switch leftPannel(constraint_widgets){
 		Component constraint_widgets{
@@ -172,7 +180,6 @@ Component root {
 	leftPannel.constraint_widgets.cstr2.xProp => ctrlPannel.Xf2
 	leftPannel.constraint_widgets.cstr2.yProp	=> ctrlPannel.Yf2
 	leftPannel.constraint_widgets.cstr.onSpike -> ctrlPannel.formationON1
-	//leftPannel.constraint_widgets.cstr.onSpike -> mapvoliere.addDrone
 	leftPannel.constraint_widgets.cstr.offSpike -> ctrlPannel.formationOFF1
 	leftPannel.constraint_widgets.cstr2.onSpike -> ctrlPannel.formationON2
 	leftPannel.constraint_widgets.cstr2.offSpike -> ctrlPannel.formationOFF2
