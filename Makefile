@@ -19,7 +19,8 @@ exe_dir := .
 # cpp example
 exe := map
 
-srcs_sma :=	src/map_mathieu/Tile.sma src/map_mathieu/Map.sma\
+srcs_sma :=	src/Map/widgets/Block.sma src/Map/widgets/BlockPannel.sma \
+			src/map_mathieu/Tile.sma src/map_mathieu/Map.sma\
 			src/Slider.sma \
 			src/Map/widgets/Menu.sma \
 			src/Map/widgets/DronePatatoidal.sma \

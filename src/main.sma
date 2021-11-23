@@ -28,6 +28,7 @@ import Map.Communications.IvyComms
 import Map.widgets.DronePatatoidal
 import testPannel.TestPannel
 import map_mathieu.Map
+import Map.widgets.BlockPannel
 
 _main_
 Component root {
@@ -49,7 +50,7 @@ Component root {
 	Button test_info(frame,"test_info_ivy", $frame.width * 0.12, $frame.height * 0.025)
 	Button test_blocks(frame, "test_blocks_ivy", $frame.width * 0.03, $frame.height * 0.025)
 
-
+	String syntax("")
 
 	constraint_widgets_button.click -> (root){
 		//"constraint_widgets" =: root.leftPannel.state
@@ -61,7 +62,10 @@ Component root {
 	}
 	TestPannel testPannel(frame, $frame.width * 0.24, $frame.height, $frame.width * 0.75, $frame.height * 0.25, bus.bus)
 	ControlPannel ctrlPannel(frame, 0, 0, $frame.width * 0.24, 0, bus.bus)
-	ctrlPannel.FP_REQ_LEADER =: bus.bus.out
+	
+	test_blocks.click -> {
+		"FP_BLOCKS_REQ file:///home/ubuntu/paparazzi/var/aircrafts/Microjet_leader/flight_plan.xml" =: bus.bus.out
+	}
 							
 	/***************************************/
 	/***********   Carte   *****************/ 
@@ -89,11 +93,14 @@ Component root {
 
 			Translation _t (0, $frame.height * 0.10)
 			
-
-
+			BlockPannel blockpannel(0, 0, 400, 800, bus.bus)
+			Button test(frame,"test", $frame.width * 0.12, $frame.height * 0.025)
+			test.click -> blockpannel.addBlock
+	
+			/*
 			TextAnchor _(1)
 			FillColor rec_bg (120, 120, 120)
-			/*Name + description? blocks*/
+			//Name + description? blocks
 			Rectangle name_bg_1 ($frame.width * 0.02, 0, $frame.width * 0.06, $frame.height * 0.10)
 			Rectangle name_bg_2 ($frame.width * 0.09, 0, $frame.width * 0.06, $frame.height * 0.10)
 			Rectangle name_bg_3 ($frame.width * 0.16, 0, $frame.width * 0.06, $frame.height * 0.10)
@@ -101,7 +108,7 @@ Component root {
 
 
 
-			/*Blocks*/
+			//
 			Rectangle bloc_1_drone_1 ($frame.width * 0.02, $frame.height * 0.12, $frame.width * 0.06, $frame.height * 0.10)
 			Rectangle bloc_2_drone_1 ($frame.width * 0.02, $frame.height * 0.24, $frame.width * 0.06, $frame.height * 0.10)
 			Rectangle bloc_3_drone_1 ($frame.width * 0.02, $frame.height * 0.36, $frame.width * 0.06, $frame.height * 0.10)
@@ -133,8 +140,6 @@ Component root {
 			Text tagDrone3_block3($frame.width * 0.19, $frame.height * 0.41, "drone3block3")
 
 		
-			/*ivy bindings*/
-			/*TODO : identify relevant block ID after final flight plan version*/
 
 			bloc_1_drone_1.press -> ctrlPannel.gotoblock1_drone1
 			bloc_2_drone_1.press -> ctrlPannel.gotoblock2_drone1
@@ -149,19 +154,7 @@ Component root {
 			bloc_3_drone_3.press -> ctrlPannel.gotoblock3_drone3
 
 
-			/*TODO : drag & drop area from block*/
-			/*FSM place_area{
-				State idle 
-				State dragging{
-					AreaRep arearep (...)
-
-				}
-				idle -> dragging(block.press)
-				dragging-> idle (frame.release, generateAreaRep)
-			}
 */
-
-
 
 		}
 	}
@@ -194,11 +187,12 @@ Component root {
 	ctrlPannel.modeF2?0:1 =: ctrlPannel.modeF2
 
 	}
-
+	Spike switch_binding_main
 	LogPrinter log("debug : ")
 	FSM pseudoBidirectionnal {
 		State idle{
 
+			"entering cstr to grid" =: log.input
 			leftPannel.constraint_widgets.cstr.xProp =:> leftPannel.constraint_widgets.gridPannel.link1.dx
 			leftPannel.constraint_widgets.cstr.yProp =:> leftPannel.constraint_widgets.gridPannel.link1.dy
 			leftPannel.constraint_widgets.cstr.headingProp =:> leftPannel.constraint_widgets.gridPannel.link1.drot
@@ -225,12 +219,14 @@ Component root {
 
 		}
 
-		idle -> notidle (leftPannel.constraint_widgets.gridPannel.bg.move)
+		idle -> notidle (leftPannel.constraint_widgets.gridPannel.bg.move, switch_binding_main)
 		notidle -> idle (leftPannel.constraint_widgets.cstr.background.bg.move)
-		notidle -> idle (leftPannel.constraint_widgets.cstr2.background.bg.move)
+		notidle -> idle (leftPannel.constraint_widgets.cstr2.background.bg.move, switch_binding_main)
 
 	}
 
+	switch_binding_main -> leftPannel.constraint_widgets.cstr.switch_binding
+	switch_binding_main -> leftPannel.constraint_widgets.cstr2.switch_binding
 }
 
 

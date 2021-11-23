@@ -17,6 +17,7 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   Spike offSpike
   Spike noSpike
   Spike update_slider
+  Spike switch_binding
   background << svg.background
   properties << svg.constraintprop
   background.constraintname.text = $label
@@ -40,15 +41,37 @@ ConstraintBox (Process frame, string label, double x_, double y_, string prop1, 
   Slider sliderZ(frame, 180, 134, -150, 150, 200)
   Slider sliderHeading(frame, 180, 170, 0, 360, 200)
 
+/*
+  FSM pseudoBidirectionnal {
+    State to_grid{
+      sliderX.output =:> xProp  
+      sliderY.output =:> yProp
+      sliderZ.output =:> zProp
+    }
+
+    State from_grid{
+      (xProp + 150) * 200 / 300=:> sliderX.gobj.t_thumb.tx
+      (yProp + 150) * 200 / 300=:> sliderY.gobj.t_thumb.tx
+      (zProp + 150) * 200 / 300=:> sliderZ.gobj.t_thumb.tx
+
+    }
+  to_grid -> from_grid(switch_binding)
+  from_grid -> to_grid(switch_binding)
+
+
+  }
+
+  
+*/
+
   sliderX.output =:> xProp  
   sliderY.output =:> yProp
   sliderZ.output =:> zProp
   
 
-  (xProp + 150) * 200 / 300=:> sliderX.gobj.t_thumb.tx
-  (yProp + 150) * 200 / 300=:> sliderY.gobj.t_thumb.tx
-  (zProp + 150) * 200 / 300=:> sliderZ.gobj.t_thumb.tx
-
+  (xProp + 150) * 200 / 300=: sliderX.gobj.t_thumb.tx
+  (yProp + 150) * 200 / 300=: sliderY.gobj.t_thumb.tx
+  (zProp + 150) * 200 / 300=: sliderZ.gobj.t_thumb.tx
 
   sliderHeading.output =:> headingProp
   

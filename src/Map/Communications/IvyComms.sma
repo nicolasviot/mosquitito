@@ -49,7 +49,7 @@ IvyAccess bus ("127.255.255.255:2010", busname, "READY")
         String get_fp_wps_attrib("FP_WPS_ATTRIB (\\S*) (\\S*) (\\S*)")
         String get_fp_exception("FP_EXCEPTIONS (\\S*) (\\S*) (\\S*)")
         String get_fp_sector("FP_SECTOR (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
-        String get_blocks("FP_BLOCKS (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
+        String get_blocks("FP_BLOCK (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*) (\\S*)")
 
 
 
@@ -57,11 +57,16 @@ IvyAccess bus ("127.255.255.255:2010", busname, "READY")
         }
 
 
-LogPrinter test("test")
+String wpt_list("")
+wpt_list + " " +bus.in.get_fp_wp.[2] => wpt_list 
 
-"machin" =: test.input
+
+
+
+LogPrinter test("Waypoint list")
+
+wpt_list => test.input
 bus.in.get_fp_info.[1] => test.input
-bus.in.get_fp_wp.[2] => test.input
 bus.in.get_fp_sector.[1] => test.input
 bus.in.get_blocks.[1] => test.input
         

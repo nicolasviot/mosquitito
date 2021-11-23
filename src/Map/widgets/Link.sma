@@ -22,7 +22,7 @@ Link(Process frame, Process firstdrone, Process seconddrone){
 
 	firstdrone.x + dx =:> seconddrone.req_x
 	firstdrone.y + dy =:> seconddrone.req_y
-	headingset? firstdrone.rot + drot : seconddrone.rot =:> seconddrone.rot
+	firstdrone.rot + drot =:> seconddrone.rot
 
 
 	// firstdrone.x - ((firstdrone.x - seconddrone.x) * 3 / 4) =:> intermediaryX
